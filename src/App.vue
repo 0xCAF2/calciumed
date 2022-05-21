@@ -194,6 +194,11 @@ result
       e.preventDefault()
       e.returnValue = 'c'
     })
+    this.$script.save = () => {
+      window.webkit.messageHandlers.save.postMessage(
+        Blockly.serialization.workspaces.save(workspace)
+      )
+    }
   },
   watch: {
     running(newValue) {
