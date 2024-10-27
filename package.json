@@ -11,5 +11,11 @@
     "devDependencies": {
         "typescript": "~5.6.2",
         "vite": "^5.4.9"
+    },
+    "dependencies": {
+        "@blockly/theme-dark": "^7.0.7",
+        "blockly": "^11.1.1",
+        "install": "^0.13.0",
+        "npm": "^10.9.0"
     }
 }
