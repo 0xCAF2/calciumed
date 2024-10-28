@@ -1,22 +1,11 @@
 import * as Blockly from 'blockly'
 import { buildEditor } from '../editor/blockly-editor'
-
-console.log('ユーザーは日本語を選択しました')
+import * as jaToolbox from '../toolbox/ja'
+import * as pythonToolbox from '../toolbox/python'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
-  contents: [
-    {
-      kind: 'category',
-      name: 'Logic',
-      contents: [
-        {
-          kind: 'block',
-          type: 'controls_if',
-        },
-      ],
-    },
-  ],
+  contents: [...jaToolbox.categories, ...pythonToolbox.categories],
 }
 
 buildEditor(document.body, { toolbox })
