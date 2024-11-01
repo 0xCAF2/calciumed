@@ -1,6 +1,6 @@
 import * as Blockly from 'blockly'
 import { buildEditor } from '../editor/blockly-editor'
-import * as jaToolbox from '../toolbox/ja'
+import * as jaToolbox from '../toolbox/ja-jp'
 import * as pythonToolbox from '../toolbox/python'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
