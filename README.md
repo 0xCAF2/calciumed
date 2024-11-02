@@ -1,3 +1,3 @@
 # capg
 
-a visual programming editor component
+A visual programming editor component
