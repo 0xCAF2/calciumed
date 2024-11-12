@@ -12,10 +12,13 @@ export type InjectOptions = {
   }
 }
 
-export const buildEditor = (
-  parent: HTMLElement,
+export const buildEditor = ({
+  parent,
+  options,
+}: {
+  parent: HTMLElement
   options: InjectOptions
-): HTMLDivElement => {
+}): HTMLDivElement => {
   const table = document.createElement('table')
   table.style.width = '100%'
   table.style.height = '100%'

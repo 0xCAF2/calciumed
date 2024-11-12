@@ -9,6 +9,10 @@ export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
         kind: 'block',
         type: 'controls_if',
       },
+      {
+        kind: 'block',
+        type: 'pseudo_if',
+      },
     ],
   },
 ]
