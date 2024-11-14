@@ -10,6 +10,7 @@ import {
   pseudoIfElseIfName,
   pseudoIfElseName,
 } from '../block/ja-jp/if'
+import { pseudoForIncrement, pseudoForDecrement } from '../block/ja-jp/for'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -26,6 +27,9 @@ export function buildCalciumEditor(parent: HTMLElement) {
     [pseudoIfElseIfName, pseudoIfElseName]
   )
   Blockly.common.defineBlocks(pseudoIfBlock)
+
+  // for blocks
+  Blockly.defineBlocksWithJsonArray([pseudoForIncrement, pseudoForDecrement])
 
   buildEditor({ parent, options: { toolbox } })
 }
