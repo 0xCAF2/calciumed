@@ -2,7 +2,7 @@
 const userLanguage =
   navigator.language || (navigator.languages && navigator.languages[0])
 
-if (userLanguage === 'ja-JP') {
+if (userLanguage === 'ja-JP' || userLanguage === 'ja') {
   const ja = await import('./lang/ja-jp')
   ja.buildCalciumEditor(document.body)
 } else {

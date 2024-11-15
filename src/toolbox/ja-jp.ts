@@ -4,6 +4,7 @@ import {
   pseudoForIncrementName,
 } from '../block/ja-jp/for'
 import { pseudoIfName } from '../block/ja-jp/if'
+import { pseudoWhileName } from '../block/ja-jp/while'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
@@ -27,6 +28,10 @@ export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       {
         kind: 'block',
         type: pseudoForDecrementName,
+      },
+      {
+        kind: 'block',
+        type: pseudoWhileName,
       },
     ],
   },
