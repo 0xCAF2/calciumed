@@ -9,8 +9,8 @@
         "preview": "vite preview"
     },
     "devDependencies": {
-        "typescript": "~5.6.2",
-        "vite": "^5.4.9"
+        "typescript": "~5.7.2",
+        "vite": "^6.0.1"
     },
     "dependencies": {
         "@blockly/theme-dark": "^7.0.7",
