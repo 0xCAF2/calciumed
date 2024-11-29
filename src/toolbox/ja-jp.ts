@@ -5,8 +5,19 @@ import {
 } from '../block/ja-jp/for'
 import { pseudoIfName } from '../block/ja-jp/if'
 import { pseudoWhileName } from '../block/ja-jp/while'
+import { pseudoPrintName } from '../block/ja-jp/print'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
+  {
+    kind: 'category',
+    name: '基本',
+    contents: [
+      {
+        kind: 'block',
+        type: pseudoPrintName,
+      },
+    ],
+  },
   {
     kind: 'category',
     name: '条件分岐',
