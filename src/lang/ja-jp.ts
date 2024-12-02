@@ -23,6 +23,13 @@ import {
   CalciumRenderer,
   calciumRendererName,
 } from '../block/renderer/renderer'
+import {
+  pseudoAssignArrayBlock,
+  pseudoAssignArrayItemBlocks,
+  pseudoAssignArrayItemName,
+  pseudoAssignArrayMixin,
+  pseudoAssignArrayMutatorName,
+} from '../block/ja-jp/array'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -30,6 +37,16 @@ const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
 }
 
 export function buildCalciumEditor(parent: HTMLElement) {
+  // array blocks
+  Blockly.defineBlocksWithJsonArray(pseudoAssignArrayItemBlocks)
+  Blockly.Extensions.registerMutator(
+    pseudoAssignArrayMutatorName,
+    pseudoAssignArrayMixin,
+    undefined,
+    [pseudoAssignArrayItemName]
+  )
+  Blockly.common.defineBlocks(pseudoAssignArrayBlock)
+
   // for blocks
   Blockly.defineBlocksWithJsonArray([pseudoForIncrement, pseudoForDecrement])
 

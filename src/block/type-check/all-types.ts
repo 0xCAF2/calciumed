@@ -1,5 +1,7 @@
-export const allTypes = [
-  'calcium_variable',
+import { calciumVariableName } from '../ja-jp/variable'
+
+export const allTypesForCheck = [
+  calciumVariableName,
   'calcium_attribute',
   'calcium_subscript',
   'calcium_call',

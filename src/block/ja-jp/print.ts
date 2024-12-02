@@ -1,12 +1,12 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypes } from '../type-check/all-type'
+import { allTypesForCheck } from '../type-check/all-types'
 
 export const pseudoPrintName = 'pseudo_print'
 export const pseudoPrintArgName = 'pseudo_print_arg'
 export const pseudoPrintMutatorName = 'pseudo_print_mutator'
-export const pseudoPrintArgsContainerName = 'pseudo_print_args_container'
+const pseudoPrintArgsContainerName = 'pseudo_print_args_container'
 
 export const pseudoPrintMutatorMixin: any = {
   compose(containerBlock: Blockly.Block) {
@@ -63,7 +63,7 @@ export const pseudoPrintMutatorMixin: any = {
       if (!this.getInput('ARG' + i)) {
         const input = this.appendValueInput('ARG' + i)
         input.init()
-        input.setCheck(allTypes)
+        input.setCheck(allTypesForCheck)
         if (i !== 0) {
           input.appendField(',')
         }

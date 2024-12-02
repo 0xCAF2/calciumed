@@ -6,6 +6,7 @@ import {
 import { pseudoIfName } from '../block/ja-jp/if'
 import { pseudoWhileName } from '../block/ja-jp/while'
 import { pseudoPrintName } from '../block/ja-jp/print'
+import { pseudoAssignArrayName } from '../block/ja-jp/array'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
@@ -15,6 +16,10 @@ export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       {
         kind: 'block',
         type: pseudoPrintName,
+      },
+      {
+        kind: 'block',
+        type: pseudoAssignArrayName,
       },
     ],
   },
