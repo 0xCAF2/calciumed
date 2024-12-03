@@ -7,12 +7,21 @@ import { pseudoIfName } from '../block/ja-jp/if'
 import { pseudoWhileName } from '../block/ja-jp/while'
 import { pseudoPrintName } from '../block/ja-jp/print'
 import { pseudoAssignArrayName } from '../block/ja-jp/array'
+import { calciumNumberName, pseudoNumberName } from '../block/ja-jp/number'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
     kind: 'category',
     name: '基本',
     contents: [
+      {
+        kind: 'block',
+        type: pseudoNumberName,
+      },
+      {
+        kind: 'block',
+        type: calciumNumberName,
+      },
       {
         kind: 'block',
         type: pseudoPrintName,

@@ -30,6 +30,7 @@ import {
   pseudoAssignArrayMixin,
   pseudoAssignArrayMutatorName,
 } from '../block/ja-jp/array'
+import { calciumNumberBlock, pseudoNumberBlock } from '../block/ja-jp/number'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -37,42 +38,47 @@ const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
 }
 
 export function buildCalciumEditor(parent: HTMLElement) {
-  // array blocks
-  Blockly.defineBlocksWithJsonArray(pseudoAssignArrayItemBlocks)
+  ;[
+    pseudoAssignArrayItemBlocks,
+    [pseudoForDecrement, pseudoForIncrement],
+    pseudoIfChildBlocks,
+    pseudoPrintArgBlocks,
+    [pseudoWhile],
+  ].forEach((blocks) => {
+    Blockly.defineBlocksWithJsonArray(blocks)
+  })
+  ;[
+    calciumNumberBlock,
+    pseudoAssignArrayBlock,
+    pseudoIf,
+    pseudoNumberBlock,
+    pseudoPrint,
+  ].forEach((block) => {
+    Blockly.common.defineBlocks(block)
+  })
+
   Blockly.Extensions.registerMutator(
     pseudoAssignArrayMutatorName,
     pseudoAssignArrayMixin,
     undefined,
     [pseudoAssignArrayItemName]
   )
-  Blockly.common.defineBlocks(pseudoAssignArrayBlock)
 
-  // for blocks
-  Blockly.defineBlocksWithJsonArray([pseudoForIncrement, pseudoForDecrement])
-
-  // if blocks
-  Blockly.defineBlocksWithJsonArray(pseudoIfChildBlocks)
   Blockly.Extensions.registerMutator(
     pseudoIfMutatorName,
     pseudoIfMutatorMixin,
     undefined,
     [pseudoIfElseIfName, pseudoIfElseName]
   )
-  Blockly.common.defineBlocks(pseudoIf)
 
-  // print block
-  Blockly.defineBlocksWithJsonArray(pseudoPrintArgBlocks)
   Blockly.Extensions.registerMutator(
     pseudoPrintMutatorName,
     pseudoPrintMutatorMixin,
     undefined,
     [pseudoPrintArgName]
   )
-  Blockly.common.defineBlocks(pseudoPrint)
 
-  // while blocks
-  Blockly.defineBlocksWithJsonArray([pseudoWhile])
-
+  // renderer
   Blockly.blockRendering.register(calciumRendererName, CalciumRenderer)
 
   buildEditor({ parent, options: { renderer: calciumRendererName, toolbox } })
