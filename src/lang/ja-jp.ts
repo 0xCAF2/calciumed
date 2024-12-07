@@ -31,6 +31,13 @@ import {
   pseudoAssignArrayMutatorName,
 } from '../block/ja-jp/array'
 import { calciumNumberBlock, pseudoNumberBlock } from '../block/ja-jp/number'
+import {
+  calciumListBlock,
+  calciumListItemBlocks,
+  calciumListItemName,
+  calciumListMutatorMixin,
+  calciumListMutatorName,
+} from '../block/ja-jp/list'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -39,6 +46,7 @@ const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[
+    calciumListItemBlocks,
     pseudoAssignArrayItemBlocks,
     [pseudoForDecrement, pseudoForIncrement],
     pseudoIfChildBlocks,
@@ -48,6 +56,7 @@ export function buildCalciumEditor(parent: HTMLElement) {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[
+    calciumListBlock,
     calciumNumberBlock,
     pseudoAssignArrayBlock,
     pseudoIf,
@@ -56,6 +65,13 @@ export function buildCalciumEditor(parent: HTMLElement) {
   ].forEach((block) => {
     Blockly.common.defineBlocks(block)
   })
+
+  Blockly.Extensions.registerMutator(
+    calciumListMutatorName,
+    calciumListMutatorMixin,
+    undefined,
+    [calciumListItemName]
+  )
 
   Blockly.Extensions.registerMutator(
     pseudoAssignArrayMutatorName,
