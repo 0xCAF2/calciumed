@@ -88,47 +88,59 @@ export const calciumListMutatorMixin: any = {
   },
 }
 
-export const calciumListItemBlocks: BlockDefinition[] = [
-  {
-    type: calciumListItemName,
-    message0: 'リストの要素',
-    inputsInline: true,
-    previousStatement: null,
-    nextStatement: null,
-    colour: 120,
-    tooltip: 'リストの要素を追加します。',
-    helpUrl: '',
-  },
-  {
-    type: calciumListContainerName,
-    message0: '%1',
-    args0: [
-      {
-        type: 'input_statement',
-        name: 'ITEMS',
-      },
-    ],
-    colour: 120,
-    tooltip: '',
-    helpUrl: '',
-  },
-]
-
-export const calciumListBlock: { [key: string]: BlockDefinition } = {
-  [calciumListName]: {
-    init() {
-      this.jsonInit({
-        type: calciumListName,
-        message0: '[',
-        output: 'Array',
-        colour: 120,
-        tooltip: 'リストを作ります。',
-        helpUrl: '',
-        mutator: calciumListMutatorName,
-      })
-      this.itemCount_ = 0
-      this.setInputsInline(true)
-      this.updateShape_()
+export function createCalciumListItemBlocks({
+  calciumListItemMessage,
+  calciumListItemTooltip,
+}: {
+  calciumListItemMessage: string
+  calciumListItemTooltip: string
+}): BlockDefinition[] {
+  return [
+    {
+      type: calciumListItemName,
+      message0: calciumListItemMessage,
+      inputsInline: true,
+      previousStatement: null,
+      nextStatement: null,
+      colour: 120,
+      tooltip: calciumListItemTooltip,
+      helpUrl: '',
     },
-  },
+    {
+      type: calciumListContainerName,
+      message0: '%1',
+      args0: [
+        {
+          type: 'input_statement',
+          name: 'ITEMS',
+        },
+      ],
+      colour: 120,
+      tooltip: '',
+      helpUrl: '',
+    },
+  ]
+}
+
+export function createCalciumListBlock({ tooltip }: { tooltip: string }): {
+  [key: string]: BlockDefinition
+} {
+  return {
+    [calciumListName]: {
+      init() {
+        this.jsonInit({
+          type: calciumListName,
+          message0: '[',
+          output: 'Array',
+          colour: 120,
+          tooltip,
+          helpUrl: '',
+          mutator: calciumListMutatorName,
+        })
+        this.itemCount_ = 0
+        this.setInputsInline(true)
+        this.updateShape_()
+      },
+    },
+  }
 }

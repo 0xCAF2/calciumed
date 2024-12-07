@@ -32,12 +32,33 @@ import {
 } from '../block/ja-jp/array'
 import { calciumNumberBlock, pseudoNumberBlock } from '../block/ja-jp/number'
 import {
-  calciumListBlock,
-  calciumListItemBlocks,
+  createCalciumListBlock,
+  createCalciumListItemBlocks,
   calciumListItemName,
   calciumListMutatorMixin,
   calciumListMutatorName,
 } from '../block/ja-jp/list'
+import {
+  CALCIUM_DEF_PARAM_MESSAGE,
+  CALCIUM_LIST_ITEM_MESSAGE,
+} from '../block/ja-jp/messages'
+import {
+  CALCIUM_DEF_METHOD_TOOLTIP,
+  CALCIUM_DEF_PARAM_TOOLTIP,
+  CALCIUM_DEF_TOOLTIP,
+  CALCIUM_LIST_ITEM_TOOLTIP,
+  CALCIUM_LIST_TOOLTIP,
+} from '../block/ja-jp/tooltips'
+import {
+  calciumDefMethodMutatorMixin,
+  calciumDefMethodMutatorName,
+  calciumDefMutatorMixin,
+  calciumDefMutatorName,
+  calciumDefParamName,
+  createCalciumDefBlock,
+  createCalciumDefMethodBlock,
+  createCalciumDefParamBlocks,
+} from '../block/ja-jp/def'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -46,7 +67,14 @@ const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[
-    calciumListItemBlocks,
+    createCalciumDefParamBlocks({
+      calciumDefParamMessage: CALCIUM_DEF_PARAM_MESSAGE,
+      calciumDefParamTooltip: CALCIUM_DEF_PARAM_TOOLTIP,
+    }),
+    createCalciumListItemBlocks({
+      calciumListItemMessage: CALCIUM_LIST_ITEM_MESSAGE,
+      calciumListItemTooltip: CALCIUM_LIST_ITEM_TOOLTIP,
+    }),
     pseudoAssignArrayItemBlocks,
     [pseudoForDecrement, pseudoForIncrement],
     pseudoIfChildBlocks,
@@ -56,7 +84,9 @@ export function buildCalciumEditor(parent: HTMLElement) {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[
-    calciumListBlock,
+    createCalciumDefBlock({ tooltip: CALCIUM_DEF_TOOLTIP }),
+    createCalciumDefMethodBlock({ tooltip: CALCIUM_DEF_METHOD_TOOLTIP }),
+    createCalciumListBlock({ tooltip: CALCIUM_LIST_TOOLTIP }),
     calciumNumberBlock,
     pseudoAssignArrayBlock,
     pseudoIf,
@@ -65,6 +95,20 @@ export function buildCalciumEditor(parent: HTMLElement) {
   ].forEach((block) => {
     Blockly.common.defineBlocks(block)
   })
+
+  Blockly.Extensions.registerMutator(
+    calciumDefMutatorName,
+    calciumDefMutatorMixin,
+    undefined,
+    [calciumDefParamName]
+  )
+
+  Blockly.Extensions.registerMutator(
+    calciumDefMethodMutatorName,
+    calciumDefMethodMutatorMixin,
+    undefined,
+    [calciumDefParamName]
+  )
 
   Blockly.Extensions.registerMutator(
     calciumListMutatorName,

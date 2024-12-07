@@ -19,6 +19,14 @@ export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
         kind: 'block',
         type: 'controls_for',
       },
+      {
+        kind: 'block',
+        type: 'calcium_def',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_def_method',
+      },
     ],
   },
 ]
