@@ -19,10 +19,7 @@ import {
   pseudoPrintMutatorMixin,
   pseudoPrintMutatorName,
 } from '../block/ja-jp/print'
-import {
-  CalciumRenderer,
-  calciumRendererName,
-} from '../block/renderer/renderer'
+import { CalciumRenderer, calciumRendererName } from '../renderer/renderer'
 import {
   pseudoAssignArrayBlock,
   pseudoAssignArrayItemBlocks,
