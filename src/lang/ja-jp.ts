@@ -38,14 +38,14 @@ import {
 import {
   CALCIUM_DEF_PARAM_MESSAGE,
   CALCIUM_LIST_ITEM_MESSAGE,
-} from '../block/ja-jp/messages'
+} from '../block/ja-jp/constant/messages'
 import {
   CALCIUM_DEF_METHOD_TOOLTIP,
   CALCIUM_DEF_PARAM_TOOLTIP,
   CALCIUM_DEF_TOOLTIP,
   CALCIUM_LIST_ITEM_TOOLTIP,
   CALCIUM_LIST_TOOLTIP,
-} from '../block/ja-jp/tooltips'
+} from '../block/ja-jp/constant/tooltips'
 import {
   calciumDefMethodMutatorMixin,
   calciumDefMethodMutatorName,
@@ -55,7 +55,7 @@ import {
   createCalciumDefBlock,
   createCalciumDefMethodBlock,
   createCalciumDefParamBlocks,
-} from '../block/ja-jp/def'
+} from '../block/python/def'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
