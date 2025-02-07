@@ -3,15 +3,13 @@ import * as Blockly from 'blockly'
 import { BlockDefinition } from 'blockly/core/blocks'
 import { parseNumber } from '../parser/parse-number'
 
-export const pseudoNumberName = 'pseudo_number'
+export const calciumNumberName = 'calcium_number'
 
-export const pseudoNumberBlock: { [key: string]: BlockDefinition } = {
-  [pseudoNumberName]: {
+export const calciumNumberBlock: { [key: string]: BlockDefinition } = {
+  [calciumNumberName]: {
     init() {
-      const dummyInput = this.appendDummyInput()
-      dummyInput.appendField('数')
-      dummyInput.appendField(
-        new Blockly.FieldTextInput('10', function (newValue) {
+      this.appendDummyInput().appendField(
+        new Blockly.FieldTextInput('0', function (newValue) {
           try {
             return parseNumber(newValue)
           } catch {
@@ -22,7 +20,7 @@ export const pseudoNumberBlock: { [key: string]: BlockDefinition } = {
       )
       this.setInputsInline(true)
       this.setOutput(true, 'Number')
-      this.setColour(0)
+      this.setColour(120)
       this.setTooltip('数を表します')
     },
   },
