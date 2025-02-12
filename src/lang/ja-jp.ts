@@ -57,7 +57,10 @@ import {
   createCalciumDefMethodBlock,
   createCalciumDefParamBlocks,
 } from '../block/python/def'
-import { createCalciumAssignmentBlock } from '../block/ja-jp/assignment'
+import {
+  createCalciumAssignmentBlock,
+  createCalciumCompoundAssignmentBlock,
+} from '../block/ja-jp/assignment'
 import { calciumNumberBlock } from '../block/python/number'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
@@ -85,6 +88,9 @@ export function buildCalciumEditor(parent: HTMLElement) {
   })
   ;[
     createCalciumAssignmentBlock({ tooltip: CALCIUM_ASSIGNMENT_TOOLTIP }),
+    createCalciumCompoundAssignmentBlock({
+      tooltip: CALCIUM_ASSIGNMENT_TOOLTIP,
+    }),
     createCalciumDefBlock({ tooltip: CALCIUM_DEF_TOOLTIP }),
     createCalciumDefMethodBlock({ tooltip: CALCIUM_DEF_METHOD_TOOLTIP }),
     createCalciumListBlock({ tooltip: CALCIUM_LIST_TOOLTIP }),

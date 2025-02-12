@@ -8,7 +8,10 @@ import { pseudoWhileName } from '../block/ja-jp/while'
 import { pseudoPrintName } from '../block/ja-jp/print'
 import { pseudoAssignArrayName } from '../block/ja-jp/array'
 import { pseudoNumberName } from '../block/ja-jp/number'
-import { calciumAssignmentName } from '../block/ja-jp/assignment'
+import {
+  CALCIUM_COMPOUND_ASSIGNMENT_NAME,
+  calciumAssignmentName,
+} from '../block/ja-jp/assignment'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
@@ -26,6 +29,10 @@ export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       {
         kind: 'block',
         type: calciumAssignmentName,
+      },
+      {
+        kind: 'block',
+        type: CALCIUM_COMPOUND_ASSIGNMENT_NAME,
       },
     ],
   },
