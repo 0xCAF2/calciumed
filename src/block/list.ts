@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypesForCheck } from '../type-check/all-types'
+import { allTypesForCheck } from '../block/type-check/all-types'
 
 export const calciumListName = 'calcium_list'
 export const calciumListMutatorName = 'calcium_list_mutator'

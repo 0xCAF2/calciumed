@@ -1,4 +1,4 @@
-import { calciumVariableName } from '../ja-jp/variable'
+import { calciumVariableName } from '../variable'
 
 export const allTypesForCheck = [
   calciumVariableName,

@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { parseNumber } from '../parser/parse-number'
+import { parseNumber } from './util/parse-number'
 
 export const pseudoNumberName = 'pseudo_number'
 

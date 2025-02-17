@@ -1,6 +1,6 @@
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypesForCheck } from '../type-check/all-types'
+import { allTypesForCheck } from '../block/type-check/all-types'
 
 export const calciumAssignmentName = 'calcium_assignment'
 export const CALCIUM_COMPOUND_ASSIGNMENT_NAME = 'calcium_compound_assignment'
