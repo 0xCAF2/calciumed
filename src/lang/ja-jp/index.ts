@@ -1,5 +1,5 @@
 import * as Blockly from 'blockly'
-import { buildEditor } from '../../editor/blockly-editor'
+import { buildEditor } from '../../editor'
 import * as jaToolbox from './toolbox'
 import * as pythonToolbox from '../../editor/python-toolbox'
 import {
@@ -9,16 +9,16 @@ import {
   pseudoIfMutatorMixin,
   pseudoIfElseIfName,
   pseudoIfElseName,
-} from '../../block/if'
-import { pseudoForIncrement, pseudoForDecrement } from '../../block/for'
-import { pseudoWhile } from '../../block/while'
+} from '../../block/pseudo/if'
+import { pseudoForIncrement, pseudoForDecrement } from '../../block/pseudo/for'
+import { pseudoWhile } from '../../block/pseudo/while'
 import {
   pseudoPrintArgBlocks,
   pseudoPrintArgName,
   pseudoPrintBlock as pseudoPrint,
   pseudoPrintMutatorMixin,
   pseudoPrintMutatorName,
-} from '../../block/print'
+} from '../../block/pseudo/print'
 import {
   CalciumRenderer,
   calciumRendererName,
@@ -29,8 +29,8 @@ import {
   pseudoAssignArrayItemName,
   pseudoAssignArrayMixin,
   pseudoAssignArrayMutatorName,
-} from '../../block/array'
-import { pseudoNumberBlock } from '../../block/number'
+} from '../../block/pseudo/array'
+import { pseudoNumberBlock } from '../../block/pseudo/number'
 import {
   createCalciumListBlock,
   createCalciumListItemBlocks,

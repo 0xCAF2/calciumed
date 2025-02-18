@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypesForCheck } from '../block/type-check/all-types'
+import { allTypesForCheck } from '../type-check/all-types'
 
 export const pseudoPrintName = 'pseudo_print'
 export const pseudoPrintArgName = 'pseudo_print_arg'

@@ -1,10 +1,13 @@
 import * as Blockly from 'blockly'
-import { pseudoForDecrementName, pseudoForIncrementName } from '../../block/for'
-import { pseudoIfName } from '../../block/if'
-import { pseudoWhileName } from '../../block/while'
-import { pseudoPrintName } from '../../block/print'
-import { pseudoAssignArrayName } from '../../block/array'
-import { pseudoNumberName } from '../../block/number'
+import {
+  pseudoForDecrementName,
+  pseudoForIncrementName,
+} from '../../block/pseudo/for'
+import { pseudoIfName } from '../../block/pseudo/if'
+import { pseudoWhileName } from '../../block/pseudo/while'
+import { pseudoPrintName } from '../../block/pseudo/print'
+import { pseudoAssignArrayName } from '../../block/pseudo/array'
+import { pseudoNumberName } from '../../block/pseudo/number'
 import {
   CALCIUM_COMPOUND_ASSIGNMENT_NAME,
   calciumAssignmentName,
