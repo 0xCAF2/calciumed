@@ -1,24 +1,27 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import DarkTheme from '@blockly/theme-dark'
+import { parseToolboxFromJson } from './toolbox-parser'
 
 export type InjectOptions = {
   renderer?: string
   sounds?: boolean
   theme?: any
-  toolbox: Blockly.utils.toolbox.ToolboxDefinition
+  toolboxUrl: string
   zoom?: {
     startScale: number
   }
 }
 
-export const buildEditor = ({
+export const buildEditor = async ({
   parent,
   options,
 }: {
   parent: HTMLElement
   options: InjectOptions
-}): HTMLDivElement => {
+}): Promise<HTMLDivElement> => {
+  const toolbox = await fetchToolbox(options.toolboxUrl)
+
   const table = document.createElement('table')
   table.style.width = '100%'
   table.style.height = '100%'
@@ -44,7 +47,7 @@ export const buildEditor = ({
     renderer: options.renderer ?? 'zelos',
     sounds: options.sounds ?? false,
     theme: options.theme ?? DarkTheme,
-    toolbox: options.toolbox,
+    toolbox,
     zoom: options.zoom ?? {
       startScale: 0.7,
     },
@@ -69,4 +72,11 @@ export const buildEditor = ({
   window.addEventListener('resize', onresize, false)
   onresize()
   return table
+}
+
+async function fetchToolbox(
+  url: string
+): Promise<Blockly.utils.toolbox.ToolboxDefinition> {
+  const response = await fetch(url)
+  return parseToolboxFromJson(await response.json())
 }

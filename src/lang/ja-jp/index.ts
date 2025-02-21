@@ -148,5 +148,11 @@ export function buildCalciumEditor(parent: HTMLElement) {
   // renderer
   Blockly.blockRendering.register(calciumRendererName, CalciumRenderer)
 
-  buildEditor({ parent, options: { renderer: calciumRendererName, toolbox } })
+  buildEditor({
+    parent,
+    options: {
+      renderer: calciumRendererName,
+      toolboxUrl: 'toolbox_ja-jp.json',
+    },
+  })
 }
