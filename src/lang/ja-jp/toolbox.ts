@@ -2,16 +2,16 @@ import * as Blockly from 'blockly'
 import {
   pseudoForDecrementName,
   pseudoForIncrementName,
-} from '../block/ja-jp/for'
-import { pseudoIfName } from '../block/ja-jp/if'
-import { pseudoWhileName } from '../block/ja-jp/while'
-import { pseudoPrintName } from '../block/ja-jp/print'
-import { pseudoAssignArrayName } from '../block/ja-jp/array'
-import { pseudoNumberName } from '../block/ja-jp/number'
+} from '../../block/pseudo/for'
+import { pseudoIfName } from '../../block/pseudo/if'
+import { pseudoWhileName } from '../../block/pseudo/while'
+import { pseudoPrintName } from '../../block/pseudo/print'
+import { pseudoAssignArrayName } from '../../block/pseudo/array'
+import { pseudoNumberName } from '../../block/pseudo/number'
 import {
   CALCIUM_COMPOUND_ASSIGNMENT_NAME,
   calciumAssignmentName,
-} from '../block/ja-jp/assignment'
+} from '../../block/assignment'
 
 export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {

@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { calciumVariableName } from './variable'
+import { calciumVariableName } from '../variable'
 import { allTypesForCheck } from '../type-check/all-types'
 
 export const pseudoAssignArrayName = 'pseudo_assign_array'

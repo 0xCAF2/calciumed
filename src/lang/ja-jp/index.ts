@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
-import { buildEditor } from '../editor/blockly-editor'
-import * as jaToolbox from '../toolbox/ja-jp'
-import * as pythonToolbox from '../toolbox/python'
+import { buildEditor } from '../../editor'
+import * as jaToolbox from './toolbox'
+import * as pythonToolbox from '../../editor/python-toolbox'
 import {
   pseudoIfBlock as pseudoIf,
   pseudoIfChildBlocks,
@@ -9,36 +9,36 @@ import {
   pseudoIfMutatorMixin,
   pseudoIfElseIfName,
   pseudoIfElseName,
-} from '../block/ja-jp/if'
-import { pseudoForIncrement, pseudoForDecrement } from '../block/ja-jp/for'
-import { pseudoWhile } from '../block/ja-jp/while'
+} from '../../block/pseudo/if'
+import { pseudoForIncrement, pseudoForDecrement } from '../../block/pseudo/for'
+import { pseudoWhile } from '../../block/pseudo/while'
 import {
   pseudoPrintArgBlocks,
   pseudoPrintArgName,
   pseudoPrintBlock as pseudoPrint,
   pseudoPrintMutatorMixin,
   pseudoPrintMutatorName,
-} from '../block/ja-jp/print'
-import { CalciumRenderer, calciumRendererName } from '../renderer/renderer'
+} from '../../block/pseudo/print'
+import {
+  CalciumRenderer,
+  calciumRendererName,
+} from '../../editor/calcium-renderer'
 import {
   pseudoAssignArrayBlock,
   pseudoAssignArrayItemBlocks,
   pseudoAssignArrayItemName,
   pseudoAssignArrayMixin,
   pseudoAssignArrayMutatorName,
-} from '../block/ja-jp/array'
-import { pseudoNumberBlock } from '../block/ja-jp/number'
+} from '../../block/pseudo/array'
+import { pseudoNumberBlock } from '../../block/pseudo/number'
 import {
   createCalciumListBlock,
   createCalciumListItemBlocks,
   calciumListItemName,
   calciumListMutatorMixin,
   calciumListMutatorName,
-} from '../block/ja-jp/list'
-import {
-  CALCIUM_DEF_PARAM_MESSAGE,
-  CALCIUM_LIST_ITEM_MESSAGE,
-} from '../block/ja-jp/constant/messages'
+} from '../../block/list'
+import { CALCIUM_DEF_PARAM_MESSAGE, CALCIUM_LIST_ITEM_MESSAGE } from './message'
 import {
   CALCIUM_ASSIGNMENT_TOOLTIP,
   CALCIUM_DEF_METHOD_TOOLTIP,
@@ -46,7 +46,7 @@ import {
   CALCIUM_DEF_TOOLTIP,
   CALCIUM_LIST_ITEM_TOOLTIP,
   CALCIUM_LIST_TOOLTIP,
-} from '../block/ja-jp/constant/tooltips'
+} from './tooltip'
 import {
   calciumDefMethodMutatorMixin,
   calciumDefMethodMutatorName,
@@ -56,12 +56,12 @@ import {
   createCalciumDefBlock,
   createCalciumDefMethodBlock,
   createCalciumDefParamBlocks,
-} from '../block/python/def'
+} from '../../block/python/def'
 import {
   createCalciumAssignmentBlock,
   createCalciumCompoundAssignmentBlock,
-} from '../block/ja-jp/assignment'
-import { calciumNumberBlock } from '../block/python/number'
+} from '../../block/assignment'
+import { calciumNumberBlock } from '../../block/python/number'
 
 const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
   kind: 'categoryToolbox',
@@ -148,5 +148,11 @@ export function buildCalciumEditor(parent: HTMLElement) {
   // renderer
   Blockly.blockRendering.register(calciumRendererName, CalciumRenderer)
 
-  buildEditor({ parent, options: { renderer: calciumRendererName, toolbox } })
+  buildEditor({
+    parent,
+    options: {
+      renderer: calciumRendererName,
+      toolboxUrl: 'toolbox_ja-jp.json',
+    },
+  })
 }
