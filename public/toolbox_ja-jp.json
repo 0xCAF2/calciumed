@@ -2,7 +2,7 @@
     {
         "基本": [
             {
-                "name": "calcium_assignment",
+                "type": "calcium_assignment",
                 "tooltip": "変数に値を代入します。"
             }
         ]

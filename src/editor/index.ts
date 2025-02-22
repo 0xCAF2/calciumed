@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import DarkTheme from '@blockly/theme-dark'
-import { parseToolboxFromJson } from './toolbox-parser'
+import { createToolbox } from './create-toolbox'
 
 export type InjectOptions = {
   renderer?: string
@@ -78,5 +78,5 @@ async function fetchToolbox(
   url: string
 ): Promise<Blockly.utils.toolbox.ToolboxDefinition> {
   const response = await fetch(url)
-  return parseToolboxFromJson(await response.json())
+  return createToolbox(await response.json())
 }
