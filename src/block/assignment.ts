@@ -1,3 +1,4 @@
+import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 import { allTypesForCheck } from '../block/type-check/all-types'
@@ -44,6 +45,12 @@ export function createCalciumAssignmentBlock({
     },
   }
 }
+
+Blockly.common.defineBlocks(
+  createCalciumAssignmentBlock({
+    tooltip: '', // TODO: import tooltip from other file
+  })
+)
 
 export function createCalciumCompoundAssignmentBlock({
   tooltip,

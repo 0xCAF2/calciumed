@@ -1,7 +1,5 @@
 import * as Blockly from 'blockly'
 import { buildEditor } from '../../editor'
-import * as jaToolbox from './toolbox'
-import * as pythonToolbox from '../../editor/python-toolbox'
 import {
   pseudoIfBlock as pseudoIf,
   pseudoIfChildBlocks,
@@ -57,16 +55,10 @@ import {
   createCalciumDefMethodBlock,
   createCalciumDefParamBlocks,
 } from '../../block/python/def'
-import {
-  createCalciumAssignmentBlock,
-  createCalciumCompoundAssignmentBlock,
-} from '../../block/assignment'
+import { createCalciumCompoundAssignmentBlock } from '../../block/assignment'
 import { calciumNumberBlock } from '../../block/python/number'
 
-const toolbox: Blockly.utils.toolbox.ToolboxDefinition = {
-  kind: 'categoryToolbox',
-  contents: [...jaToolbox.categories, ...pythonToolbox.categories],
-}
+import '../../block/assignment'
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[
@@ -87,7 +79,6 @@ export function buildCalciumEditor(parent: HTMLElement) {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[
-    createCalciumAssignmentBlock({ tooltip: CALCIUM_ASSIGNMENT_TOOLTIP }),
     createCalciumCompoundAssignmentBlock({
       tooltip: CALCIUM_ASSIGNMENT_TOOLTIP,
     }),
