@@ -3,10 +3,10 @@ import * as Blockly from 'blockly'
 import { BlockDefinition } from 'blockly/core/blocks'
 import { parseNumber } from '../util/parse-number'
 
-export const pseudoNumberName = 'pseudo_number'
+export const CALCIUM_PSEUDO_NUMBER_NAME = 'pseudo_number'
 
-export const pseudoNumberBlock: { [key: string]: BlockDefinition } = {
-  [pseudoNumberName]: {
+const pseudoNumberBlock: { [key: string]: BlockDefinition } = {
+  [CALCIUM_PSEUDO_NUMBER_NAME]: {
     init() {
       const dummyInput = this.appendDummyInput()
       dummyInput.appendField('数')
@@ -27,3 +27,5 @@ export const pseudoNumberBlock: { [key: string]: BlockDefinition } = {
     },
   },
 }
+
+Blockly.common.defineBlocks(pseudoNumberBlock)

@@ -1,16 +1,15 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypesForCheck } from '../block/type-check/all-types'
 
-export const CALCIUM_ASSIGNMENT_NAME = 'calcium_assignment'
+export const CALCIUM_COMPOUND_ASSIGNMENT_NAME = 'calcium_compound_assignment'
 
-const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
-  [CALCIUM_ASSIGNMENT_NAME]: {
+const compoundAssignmentBlock: { [key: string]: BlockDefinition } = {
+  [CALCIUM_COMPOUND_ASSIGNMENT_NAME]: {
     init() {
       this.jsonInit({
-        type: CALCIUM_ASSIGNMENT_NAME,
-        message0: '%1 = %2',
+        type: CALCIUM_COMPOUND_ASSIGNMENT_NAME,
+        message0: '%1 %2 %3',
         args0: [
           {
             type: 'input_value',
@@ -19,13 +18,20 @@ const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
               'calcium_variable',
               'calcium_attribute',
               'calcium_subscription',
-              'calcium_comma',
+            ],
+          },
+          {
+            type: 'field_dropdown',
+            name: 'OP',
+            options: [
+              ['+=', '+='],
+              ['-=', '-='],
+              ['*=', '*='],
             ],
           },
           {
             type: 'input_value',
             name: 'VALUE',
-            check: allTypesForCheck,
           },
         ],
         inputsInline: true,
@@ -39,4 +45,4 @@ const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
   },
 }
 
-Blockly.common.defineBlocks(calciumAssignmentBlock)
+Blockly.common.defineBlocks(compoundAssignmentBlock)

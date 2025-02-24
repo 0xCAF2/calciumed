@@ -28,7 +28,6 @@ import {
   pseudoAssignArrayMixin,
   pseudoAssignArrayMutatorName,
 } from '../../block/pseudo/array'
-import { pseudoNumberBlock } from '../../block/pseudo/number'
 import {
   createCalciumListBlock,
   createCalciumListItemBlocks,
@@ -38,7 +37,6 @@ import {
 } from '../../block/list'
 import { CALCIUM_DEF_PARAM_MESSAGE, CALCIUM_LIST_ITEM_MESSAGE } from './message'
 import {
-  CALCIUM_ASSIGNMENT_TOOLTIP,
   CALCIUM_DEF_METHOD_TOOLTIP,
   CALCIUM_DEF_PARAM_TOOLTIP,
   CALCIUM_DEF_TOOLTIP,
@@ -55,10 +53,16 @@ import {
   createCalciumDefMethodBlock,
   createCalciumDefParamBlocks,
 } from '../../block/python/def'
-import { createCalciumCompoundAssignmentBlock } from '../../block/assignment'
 import { calciumNumberBlock } from '../../block/python/number'
 
 import '../../block/assignment'
+import '../../block/compound-assignment'
+
+import '../../block/pseudo/number'
+
+import * as Lang from 'blockly/msg/ja'
+
+Blockly.setLocale(Lang)
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[
@@ -79,16 +83,12 @@ export function buildCalciumEditor(parent: HTMLElement) {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[
-    createCalciumCompoundAssignmentBlock({
-      tooltip: CALCIUM_ASSIGNMENT_TOOLTIP,
-    }),
     createCalciumDefBlock({ tooltip: CALCIUM_DEF_TOOLTIP }),
     createCalciumDefMethodBlock({ tooltip: CALCIUM_DEF_METHOD_TOOLTIP }),
     createCalciumListBlock({ tooltip: CALCIUM_LIST_TOOLTIP }),
     calciumNumberBlock,
     pseudoAssignArrayBlock,
     pseudoIf,
-    pseudoNumberBlock,
     pseudoPrint,
   ].forEach((block) => {
     Blockly.common.defineBlocks(block)
