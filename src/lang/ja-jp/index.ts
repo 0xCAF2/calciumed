@@ -30,29 +30,11 @@ import {
 } from '../../block/pseudo/array'
 import {
   createCalciumListBlock,
-  createCalciumListItemBlocks,
   calciumListItemName,
   calciumListMutatorMixin,
   calciumListMutatorName,
 } from '../../block/list'
-import { CALCIUM_DEF_PARAM_MESSAGE, CALCIUM_LIST_ITEM_MESSAGE } from './message'
-import {
-  CALCIUM_DEF_METHOD_TOOLTIP,
-  CALCIUM_DEF_PARAM_TOOLTIP,
-  CALCIUM_DEF_TOOLTIP,
-  CALCIUM_LIST_ITEM_TOOLTIP,
-  CALCIUM_LIST_TOOLTIP,
-} from './tooltip'
-import {
-  calciumDefMethodMutatorMixin,
-  calciumDefMethodMutatorName,
-  calciumDefMutatorMixin,
-  calciumDefMutatorName,
-  calciumDefParamName,
-  createCalciumDefBlock,
-  createCalciumDefMethodBlock,
-  createCalciumDefParamBlocks,
-} from '../../block/python/def'
+import { CALCIUM_LIST_TOOLTIP } from './tooltip'
 import { calciumNumberBlock } from '../../block/python/number'
 
 import '../../block/assignment'
@@ -62,18 +44,11 @@ import '../../block/pseudo/number'
 
 import * as Lang from 'blockly/msg/ja'
 
+// @ts-ignore
 Blockly.setLocale(Lang)
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[
-    createCalciumDefParamBlocks({
-      calciumDefParamMessage: CALCIUM_DEF_PARAM_MESSAGE,
-      calciumDefParamTooltip: CALCIUM_DEF_PARAM_TOOLTIP,
-    }),
-    createCalciumListItemBlocks({
-      calciumListItemMessage: CALCIUM_LIST_ITEM_MESSAGE,
-      calciumListItemTooltip: CALCIUM_LIST_ITEM_TOOLTIP,
-    }),
     pseudoAssignArrayItemBlocks,
     [pseudoForDecrement, pseudoForIncrement],
     pseudoIfChildBlocks,
@@ -83,8 +58,6 @@ export function buildCalciumEditor(parent: HTMLElement) {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[
-    createCalciumDefBlock({ tooltip: CALCIUM_DEF_TOOLTIP }),
-    createCalciumDefMethodBlock({ tooltip: CALCIUM_DEF_METHOD_TOOLTIP }),
     createCalciumListBlock({ tooltip: CALCIUM_LIST_TOOLTIP }),
     calciumNumberBlock,
     pseudoAssignArrayBlock,
@@ -93,20 +66,6 @@ export function buildCalciumEditor(parent: HTMLElement) {
   ].forEach((block) => {
     Blockly.common.defineBlocks(block)
   })
-
-  Blockly.Extensions.registerMutator(
-    calciumDefMutatorName,
-    calciumDefMutatorMixin,
-    undefined,
-    [calciumDefParamName]
-  )
-
-  Blockly.Extensions.registerMutator(
-    calciumDefMethodMutatorName,
-    calciumDefMethodMutatorMixin,
-    undefined,
-    [calciumDefParamName]
-  )
 
   Blockly.Extensions.registerMutator(
     calciumListMutatorName,
