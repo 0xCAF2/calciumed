@@ -1,5 +1,4 @@
 import * as Blockly from 'blockly'
-import { buildEditor } from '../../editor'
 import {
   pseudoIfBlock as pseudoIf,
   pseudoIfChildBlocks,
@@ -46,6 +45,9 @@ import * as Lang from 'blockly/msg/ja'
 
 // @ts-ignore
 Blockly.setLocale(Lang)
+
+import './message'
+import { buildEditor } from '../../editor'
 
 export function buildCalciumEditor(parent: HTMLElement) {
   ;[

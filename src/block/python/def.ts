@@ -111,6 +111,13 @@ const calciumDefMutatorMixin: any = {
   },
 }
 
+Blockly.Extensions.registerMutator(
+  CALCIUM_DEF_MUTATOR_NAME,
+  calciumDefMutatorMixin,
+  undefined,
+  [CALCIUM_DEF_PARAM_NAME]
+)
+
 const calciumDefParamBlocks: BlockDefinition[] = [
   {
     type: CALCIUM_DEF_PARAM_NAME,
@@ -146,7 +153,7 @@ const calciumDefParamBlocks: BlockDefinition[] = [
 
 Blockly.defineBlocksWithJsonArray(calciumDefParamBlocks)
 
-export const calciumDefMethodMutatorMixin: any = {
+const calciumDefMethodMutatorMixin: any = {
   compose: calciumDefMutatorMixin.compose,
   decompose: calciumDefMutatorMixin.decompose,
   saveExtraState: calciumDefMutatorMixin.saveExtraState,
@@ -169,44 +176,51 @@ export const calciumDefMethodMutatorMixin: any = {
   },
 }
 
-export function createCalciumDefMethodBlock({ tooltip }: { tooltip: string }): {
+Blockly.Extensions.registerMutator(
+  CALCIUM_DEF_METHOD_MUTATOR_NAME,
+  calciumDefMethodMutatorMixin,
+  undefined,
+  [CALCIUM_DEF_PARAM_NAME]
+)
+
+const calciumDefMethodBlock: {
   [key: string]: BlockDefinition
-} {
-  return {
-    [CALCIUM_DEF_METHOD_NAME]: {
-      init() {
-        this.jsonInit({
-          type: CALCIUM_DEF_METHOD_NAME,
-          message0: 'def %1 %2 %3 %4',
-          args0: [
-            {
-              type: 'field_input',
-              name: 'NAME',
-              text: '__init__',
-            },
-            {
-              type: 'field_label_serializable',
-              name: 'LABELS',
-              text: '',
-            },
-            {
-              type: 'input_dummy',
-            },
-            {
-              type: 'input_statement',
-              name: 'STMTS',
-            },
-          ],
-          previousStatement: null,
-          nextStatement: null,
-          colour: 240,
-          tooltip,
-          helpUrl: '',
-          mutator: CALCIUM_DEF_METHOD_MUTATOR_NAME,
-        })
-        this.countOfParameters = 0
-        this.updateShape()
-      },
+} = {
+  [CALCIUM_DEF_METHOD_NAME]: {
+    init() {
+      this.jsonInit({
+        type: CALCIUM_DEF_METHOD_NAME,
+        message0: 'def %1 %2 %3 %4',
+        args0: [
+          {
+            type: 'field_input',
+            name: 'NAME',
+            text: '__init__',
+          },
+          {
+            type: 'field_label_serializable',
+            name: 'LABELS',
+            text: '',
+          },
+          {
+            type: 'input_dummy',
+          },
+          {
+            type: 'input_statement',
+            name: 'STMTS',
+          },
+        ],
+        previousStatement: null,
+        nextStatement: null,
+        colour: 240,
+        tooltip: '',
+        helpUrl: '',
+        mutator: CALCIUM_DEF_METHOD_MUTATOR_NAME,
+      })
+      this.countOfParameters = 0
+      this.updateShape()
     },
-  }
+  },
 }
+
+Blockly.common.defineBlocks(calciumDefMethodBlock)

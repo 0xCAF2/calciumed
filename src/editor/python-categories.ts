@@ -1,14 +1,14 @@
 import * as Blockly from 'blockly'
-import { calciumNumberName } from '../block/python/number'
+import '../block/python'
 
-export const categories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
+export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
     kind: 'category',
     name: 'Python1',
     contents: [
       {
         kind: 'block',
-        type: calciumNumberName,
+        type: 'calcium_number',
       },
       {
         kind: 'block',

@@ -3,7 +3,7 @@
         "基本": [
             {
                 "type": "pseudo_number",
-                "tooltip": "数値を入力します。"
+                "tooltip": "数を入力します。"
             },
             {
                 "type": "calcium_assignment",
