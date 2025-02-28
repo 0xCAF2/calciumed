@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { messageManager } from '../message-manager'
+import { messageManager, tooltipManager } from '../../constant-manager'
 
 const CALCIUM_DEF_NAME = 'calcium_def'
 const CALCIUM_DEF_MUTATOR_NAME = 'calcium_def_mutator'
@@ -41,7 +41,7 @@ const calciumDefBlock: {
         previousStatement: null,
         nextStatement: null,
         colour: 240,
-        tooltip: '',
+        tooltip: tooltipManager.getValue('CALCIUM_DEF_TOOLTIP'),
         helpUrl: '',
         mutator: CALCIUM_DEF_MUTATOR_NAME,
       })
@@ -121,7 +121,7 @@ Blockly.Extensions.registerMutator(
 const calciumDefParamBlocks: BlockDefinition[] = [
   {
     type: CALCIUM_DEF_PARAM_NAME,
-    message0: messageManager.getMessage('CALCIUM_DEF_PARAM_MESSAGE'),
+    message0: messageManager.getValue('CALCIUM_DEF_PARAM_MESSAGE'),
     args0: [
       {
         type: 'field_input',

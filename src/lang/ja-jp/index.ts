@@ -28,12 +28,10 @@ import {
   pseudoAssignArrayMutatorName,
 } from '../../block/pseudo/array'
 import {
-  createCalciumListBlock,
   calciumListItemName,
   calciumListMutatorMixin,
   calciumListMutatorName,
 } from '../../block/list'
-import { CALCIUM_LIST_TOOLTIP } from './tooltip'
 import { calciumNumberBlock } from '../../block/python/number'
 
 import '../../block/assignment'
@@ -47,6 +45,7 @@ import * as Lang from 'blockly/msg/ja'
 Blockly.setLocale(Lang)
 
 import './message'
+import './tooltip'
 import { buildEditor } from '../../editor'
 
 export function buildCalciumEditor(parent: HTMLElement) {
@@ -59,15 +58,11 @@ export function buildCalciumEditor(parent: HTMLElement) {
   ].forEach((blocks) => {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
-  ;[
-    createCalciumListBlock({ tooltip: CALCIUM_LIST_TOOLTIP }),
-    calciumNumberBlock,
-    pseudoAssignArrayBlock,
-    pseudoIf,
-    pseudoPrint,
-  ].forEach((block) => {
-    Blockly.common.defineBlocks(block)
-  })
+  ;[calciumNumberBlock, pseudoAssignArrayBlock, pseudoIf, pseudoPrint].forEach(
+    (block) => {
+      Blockly.common.defineBlocks(block)
+    }
+  )
 
   Blockly.Extensions.registerMutator(
     calciumListMutatorName,
