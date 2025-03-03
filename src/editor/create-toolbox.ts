@@ -10,9 +10,9 @@ export function createToolbox(
     blocks.push({
       kind: 'category',
       name: categoryName,
-      contents: category[categoryName].map((block: BlockDefinition) => ({
+      contents: category[categoryName].map((blockName: BlockDefinition) => ({
         kind: 'block',
-        type: block.type,
+        type: blockName,
       })),
     })
   }
@@ -22,10 +22,7 @@ export function createToolbox(
   }
 }
 
-type BlockDefinition = {
-  type: string
-  tooltip: string
-}
+type BlockDefinition = string
 
 type CategoryDefinition = {
   [key: string]: BlockDefinition[]

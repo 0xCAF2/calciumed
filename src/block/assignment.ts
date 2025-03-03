@@ -2,6 +2,7 @@ import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 import { allTypesForCheck } from '../block/type-check/all-types'
+import { tooltipManager } from '../constant-manager'
 
 export const CALCIUM_ASSIGNMENT_NAME = 'calcium_assignment'
 
@@ -32,7 +33,7 @@ const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
         previousStatement: null,
         nextStatement: null,
         colour: 210,
-        tooltip: '',
+        tooltip: tooltipManager.getValue('CALCIUM_ASSIGNMENT_TOOLTIP'),
         helpUrl: '',
       })
     },

@@ -1,18 +1,9 @@
 [
     {
         "基本": [
-            {
-                "type": "pseudo_number",
-                "tooltip": "数を入力します。"
-            },
-            {
-                "type": "calcium_assignment",
-                "tooltip": "変数に値を代入します。"
-            },
-            {
-                "type": "calcium_compound_assignment",
-                "tooltip": "変数に計算した値を代入します。"
-            }
+            "pseudo_number",
+            "calcium_assignment",
+            "calcium_compound_assignment"
         ]
     }
 ]
