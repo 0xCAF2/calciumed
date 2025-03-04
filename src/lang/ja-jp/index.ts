@@ -11,10 +11,7 @@ import { pseudoForIncrement, pseudoForDecrement } from '../../block/pseudo/for'
 import { pseudoWhile } from '../../block/pseudo/while'
 import {
   pseudoPrintArgBlocks,
-  pseudoPrintArgName,
   pseudoPrintBlock as pseudoPrint,
-  pseudoPrintMutatorMixin,
-  pseudoPrintMutatorName,
 } from '../../block/pseudo/print'
 import {
   CalciumRenderer,
@@ -38,6 +35,7 @@ import '../../block/assignment'
 import '../../block/compound-assignment'
 
 import '../../block/pseudo/number'
+import '../../block/pseudo/print'
 
 import * as Lang from 'blockly/msg/ja'
 
@@ -83,13 +81,6 @@ export function buildCalciumEditor(parent: HTMLElement) {
     pseudoIfMutatorMixin,
     undefined,
     [pseudoIfElseIfName, pseudoIfElseName]
-  )
-
-  Blockly.Extensions.registerMutator(
-    pseudoPrintMutatorName,
-    pseudoPrintMutatorMixin,
-    undefined,
-    [pseudoPrintArgName]
   )
 
   // renderer

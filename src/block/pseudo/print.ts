@@ -3,12 +3,12 @@ import * as Blockly from 'blockly'
 import { BlockDefinition } from 'blockly/core/blocks'
 import { allTypesForCheck } from '../type-check/all-types'
 
-export const pseudoPrintName = 'pseudo_print'
-export const pseudoPrintArgName = 'pseudo_print_arg'
-export const pseudoPrintMutatorName = 'pseudo_print_mutator'
+const PSEUDO_PRINT_NAME = 'pseudo_print'
+const PSEUDO_PRINT_ARG_NAME = 'pseudo_print_arg'
+const PSEUDO_PRINT_MUTATOR_NAME = 'pseudo_print_mutator'
 const pseudoPrintArgsContainerName = 'pseudo_print_args_container'
 
-export const pseudoPrintMutatorMixin: any = {
+const pseudoPrintMutatorMixin: any = {
   compose(containerBlock: Blockly.Block) {
     let itemBlock: any = containerBlock.getInputTargetBlock('ARGS')
     const connections: any[] = []
@@ -37,7 +37,7 @@ export const pseudoPrintMutatorMixin: any = {
     let connection = containerBlock.getInput('ARGS')?.connection
     for (let i = 0; i < this.countOfArguments; ++i) {
       const itemBlock = workspace.newBlock(
-        pseudoPrintArgName
+        PSEUDO_PRINT_ARG_NAME
       ) as Blockly.BlockSvg
       itemBlock.initSvg()
       connection?.connect(itemBlock.previousConnection)
@@ -88,9 +88,16 @@ export const pseudoPrintMutatorMixin: any = {
   },
 }
 
+Blockly.Extensions.registerMutator(
+  PSEUDO_PRINT_MUTATOR_NAME,
+  pseudoPrintMutatorMixin,
+  undefined,
+  [PSEUDO_PRINT_ARG_NAME]
+)
+
 export const pseudoPrintArgBlocks: BlockDefinition[] = [
   {
-    type: pseudoPrintArgName,
+    type: PSEUDO_PRINT_ARG_NAME,
     message0: '引数を追加',
     inputsInline: true,
     previousStatement: null,
@@ -115,10 +122,10 @@ export const pseudoPrintArgBlocks: BlockDefinition[] = [
 ]
 
 export const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
-  [pseudoPrintName]: {
+  [PSEUDO_PRINT_NAME]: {
     init() {
       this.jsonInit({
-        type: pseudoPrintName,
+        type: PSEUDO_PRINT_NAME,
         message0: '表示する (',
         inputsInline: true,
         previousStatement: null,
@@ -126,7 +133,7 @@ export const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
         colour: 210,
         tooltip: '指定した内容を表示します。',
         helpUrl: '',
-        mutator: pseudoPrintMutatorName,
+        mutator: PSEUDO_PRINT_MUTATOR_NAME,
       })
       this.countOfArguments = 1
       this.updateShape()
