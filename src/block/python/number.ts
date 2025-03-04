@@ -2,6 +2,7 @@ import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 import { parseNumber } from '../util/parse-number'
+import { tooltipManager } from '../../constant-manager'
 
 export const calciumNumberName = 'calcium_number'
 
@@ -21,7 +22,7 @@ export const calciumNumberBlock: { [key: string]: BlockDefinition } = {
       this.setInputsInline(true)
       this.setOutput(true, 'Number')
       this.setColour(120)
-      this.setTooltip('数を表します')
+      this.setTooltip(tooltipManager.getValue('CALCIUM_NUMBER_TOOLTIP'))
     },
   },
 }
