@@ -95,7 +95,7 @@ Blockly.Extensions.registerMutator(
   [PSEUDO_PRINT_ARG_NAME]
 )
 
-export const pseudoPrintArgBlocks: BlockDefinition[] = [
+const pseudoPrintArgBlocks: BlockDefinition[] = [
   {
     type: PSEUDO_PRINT_ARG_NAME,
     message0: '引数を追加',
@@ -121,7 +121,9 @@ export const pseudoPrintArgBlocks: BlockDefinition[] = [
   },
 ]
 
-export const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
+Blockly.defineBlocksWithJsonArray(pseudoPrintArgBlocks)
+
+const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
   [PSEUDO_PRINT_NAME]: {
     init() {
       this.jsonInit({
@@ -140,3 +142,5 @@ export const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
     },
   },
 }
+
+Blockly.common.defineBlocks(pseudoPrintBlock)

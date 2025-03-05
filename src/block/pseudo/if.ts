@@ -2,14 +2,14 @@ import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 
-export const pseudoIfName = 'pseudo_if'
-export const pseudoIfContainerName = 'pseudo_if_container'
-export const pseudoIfElseIfName = 'pseudo_if_else_if'
-export const pseudoIfElseName = 'pseudo_if_else'
+const PSEUDO_IF_NAME = 'pseudo_if'
+const PSEUDO_IF_CONTAINER_NAME = 'pseudo_if_container'
+const PSEUDO_IF_ELSEIF_NAME = 'pseudo_if_else_if'
+const PSEUDO_IF_ELSE_NAME = 'pseudo_if_else'
 
-export const pseudoIfMutatorName = 'pseudo_if_mutator'
+const PSEUDO_IF_MUTATOR_NAME = 'pseudo_if_mutator'
 
-export const pseudoIfMutatorMixin: any = {
+const pseudoIfMutatorMixin: any = {
   saveExtraState(): any {
     return {
       elseIfCount: this.elseIfCount_,
@@ -31,12 +31,12 @@ export const pseudoIfMutatorMixin: any = {
 
     while (clauseBlock && !clauseBlock.isInsertionMarker()) {
       switch (clauseBlock.type) {
-        case pseudoIfElseIfName:
+        case PSEUDO_IF_ELSEIF_NAME:
           this.elseIfCount_++
           valueConnections.push(clauseBlock.valueConnection_)
           statementConnections.push(clauseBlock.statementConnection_)
           break
-        case pseudoIfElseName:
+        case PSEUDO_IF_ELSE_NAME:
           this.elseCount_++
           elseStatementConnection = clauseBlock.statementConnection_
           break
@@ -55,20 +55,22 @@ export const pseudoIfMutatorMixin: any = {
   },
   decompose(workspace: Blockly.Workspace) {
     const containerBlock = workspace.newBlock(
-      pseudoIfContainerName
+      PSEUDO_IF_CONTAINER_NAME
     ) as Blockly.BlockSvg
     containerBlock.initSvg()
     let connection = containerBlock.nextConnection
     for (let i = 1; i < this.elseIfCount_; ++i) {
       const elseIfBlock = workspace.newBlock(
-        pseudoIfElseIfName
+        PSEUDO_IF_ELSEIF_NAME
       ) as Blockly.BlockSvg
       elseIfBlock.initSvg()
       connection.connect(elseIfBlock.previousConnection)
       connection = elseIfBlock.nextConnection
     }
     if (this.elseCount_) {
-      const elseBlock = workspace.newBlock(pseudoIfElseName) as Blockly.BlockSvg
+      const elseBlock = workspace.newBlock(
+        PSEUDO_IF_ELSE_NAME
+      ) as Blockly.BlockSvg
       elseBlock.initSvg()
       connection.connect(elseBlock.previousConnection)
     }
@@ -115,7 +117,7 @@ export const pseudoIfMutatorMixin: any = {
     let i = 1
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case pseudoIfElseIfName:
+        case PSEUDO_IF_ELSEIF_NAME:
           const inputIf = this.getInput('IF' + i)
           const inputDo = this.getInput('DO' + i)
           clauseBlock.valueConnection_ =
@@ -124,7 +126,7 @@ export const pseudoIfMutatorMixin: any = {
             inputDo && inputDo.connection.targetConnection
           ++i
           break
-        case pseudoIfElseName:
+        case PSEUDO_IF_ELSE_NAME:
           const elseDo = this.getInput('ELSE')
           clauseBlock.statementConnection_ =
             elseDo && elseDo.connection.targetConnection
@@ -167,9 +169,16 @@ export const pseudoIfMutatorMixin: any = {
   },
 }
 
-export const pseudoIfChildBlocks: BlockDefinition[] = [
+Blockly.Extensions.registerMutator(
+  PSEUDO_IF_MUTATOR_NAME,
+  pseudoIfMutatorMixin,
+  undefined,
+  [PSEUDO_IF_ELSEIF_NAME, PSEUDO_IF_ELSE_NAME]
+)
+
+const pseudoIfChildBlocks: BlockDefinition[] = [
   {
-    type: pseudoIfContainerName,
+    type: PSEUDO_IF_CONTAINER_NAME,
     message0: 'もし',
     nextStatement: null,
     enableContextMenu: false,
@@ -177,7 +186,7 @@ export const pseudoIfChildBlocks: BlockDefinition[] = [
     tooltip: '条件を指定します。',
   },
   {
-    type: pseudoIfElseIfName,
+    type: PSEUDO_IF_ELSEIF_NAME,
     message0: 'そうでなくもし',
     previousStatement: null,
     nextStatement: null,
@@ -186,7 +195,7 @@ export const pseudoIfChildBlocks: BlockDefinition[] = [
     tooltip: '追加の条件を指定します。',
   },
   {
-    type: pseudoIfElseName,
+    type: PSEUDO_IF_ELSE_NAME,
     message0: 'そうでなければ',
     previousStatement: null,
     enableContextMenu: false,
@@ -195,11 +204,13 @@ export const pseudoIfChildBlocks: BlockDefinition[] = [
   },
 ]
 
-export const pseudoIfBlock: { [key: string]: BlockDefinition } = {
-  [pseudoIfName]: {
+Blockly.defineBlocksWithJsonArray(pseudoIfChildBlocks)
+
+const pseudoIfBlock: { [key: string]: BlockDefinition } = {
+  [PSEUDO_IF_NAME]: {
     init() {
       this.jsonInit({
-        type: pseudoIfName,
+        type: PSEUDO_IF_NAME,
         message0: 'もし %1 ならば:',
         args0: [
           {
@@ -219,10 +230,12 @@ export const pseudoIfBlock: { [key: string]: BlockDefinition } = {
         nextStatement: null,
         colour: 210,
         tooltip: '条件によって、実行する文を変えます。',
-        mutator: pseudoIfMutatorName,
+        mutator: PSEUDO_IF_MUTATOR_NAME,
       })
       this.elseIfCount_ = 0
       this.elseCount_ = 0
     },
   },
 }
+
+Blockly.common.defineBlocks(pseudoIfBlock)

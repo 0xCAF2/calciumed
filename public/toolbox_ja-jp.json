@@ -6,5 +6,10 @@
             "calcium_compound_assignment",
             "pseudo_print"
         ]
+    },
+    {
+        "条件分岐": [
+            "pseudo_if"
+        ]
     }
 ]
