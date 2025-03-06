@@ -1,6 +1,4 @@
 import * as Blockly from 'blockly'
-import { pseudoForIncrement, pseudoForDecrement } from '../../block/pseudo/for'
-import { pseudoWhile } from '../../block/pseudo/while'
 import {
   CalciumRenderer,
   calciumRendererName,
@@ -27,6 +25,9 @@ import '../../block/pseudo/print'
 
 import '../../block/pseudo/if'
 
+import '../../block/pseudo/for'
+import '../../block/pseudo/while'
+
 import * as Lang from 'blockly/msg/ja'
 
 // @ts-ignore
@@ -37,11 +38,7 @@ import './tooltip'
 import { buildEditor } from '../../editor'
 
 export function buildCalciumEditor(parent: HTMLElement) {
-  ;[
-    pseudoAssignArrayItemBlocks,
-    [pseudoForDecrement, pseudoForIncrement],
-    [pseudoWhile],
-  ].forEach((blocks) => {
+  ;[pseudoAssignArrayItemBlocks].forEach((blocks) => {
     Blockly.defineBlocksWithJsonArray(blocks)
   })
   ;[calciumNumberBlock, pseudoAssignArrayBlock].forEach((block) => {

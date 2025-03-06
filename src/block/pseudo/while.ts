@@ -1,10 +1,11 @@
+import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 
-export const pseudoWhileName = 'pseudo_while'
+const PSEUDO_WHILE_NAME = 'pseudo_while'
 
-export const pseudoWhile: BlockDefinition = {
-  type: pseudoWhileName,
+const pseudoWhile: BlockDefinition = {
+  type: PSEUDO_WHILE_NAME,
   message0: '%1 の間繰り返す: %2 %3',
   args0: [
     {
@@ -27,3 +28,5 @@ export const pseudoWhile: BlockDefinition = {
   tooltip: '条件を満たす間、繰り返します。',
   helpUrl: '',
 }
+
+Blockly.defineBlocksWithJsonArray([pseudoWhile])

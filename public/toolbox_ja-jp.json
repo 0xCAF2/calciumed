@@ -11,5 +11,12 @@
         "条件分岐": [
             "pseudo_if"
         ]
+    },
+    {
+        "繰り返し": [
+            "pseudo_for_increment",
+            "pseudo_for_decrement",
+            "pseudo_while"
+        ]
     }
 ]
