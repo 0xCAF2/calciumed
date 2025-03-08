@@ -4,13 +4,6 @@ import {
   calciumRendererName,
 } from '../../editor/calcium-renderer'
 import {
-  pseudoAssignArrayBlock,
-  pseudoAssignArrayItemBlocks,
-  pseudoAssignArrayItemName,
-  pseudoAssignArrayMixin,
-  pseudoAssignArrayMutatorName,
-} from '../../block/pseudo/array'
-import {
   calciumListItemName,
   calciumListMutatorMixin,
   calciumListMutatorName,
@@ -19,6 +12,8 @@ import { calciumNumberBlock } from '../../block/python/number'
 
 import '../../block/assignment'
 import '../../block/compound-assignment'
+
+import '../../block/pseudo/array'
 
 import '../../block/pseudo/number'
 import '../../block/pseudo/print'
@@ -38,10 +33,7 @@ import './tooltip'
 import { buildEditor } from '../../editor'
 
 export function buildCalciumEditor(parent: HTMLElement) {
-  ;[pseudoAssignArrayItemBlocks].forEach((blocks) => {
-    Blockly.defineBlocksWithJsonArray(blocks)
-  })
-  ;[calciumNumberBlock, pseudoAssignArrayBlock].forEach((block) => {
+  ;[calciumNumberBlock].forEach((block) => {
     Blockly.common.defineBlocks(block)
   })
 
@@ -50,13 +42,6 @@ export function buildCalciumEditor(parent: HTMLElement) {
     calciumListMutatorMixin,
     undefined,
     [calciumListItemName]
-  )
-
-  Blockly.Extensions.registerMutator(
-    pseudoAssignArrayMutatorName,
-    pseudoAssignArrayMixin,
-    undefined,
-    [pseudoAssignArrayItemName]
   )
 
   // renderer

@@ -4,6 +4,7 @@
             "pseudo_number",
             "calcium_assignment",
             "calcium_compound_assignment",
+            "pseudo_array_assignment",
             "pseudo_print"
         ]
     },

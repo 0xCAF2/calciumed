@@ -4,12 +4,13 @@ import { BlockDefinition } from 'blockly/core/blocks'
 import { calciumVariableName } from '../variable'
 import { allTypesForCheck } from '../type-check/all-types'
 
-export const pseudoAssignArrayName = 'pseudo_assign_array'
-export const pseudoAssignArrayMutatorName = 'pseudo_assign_array_mutator'
-export const pseudoAssignArrayItemName = 'pseudo_assign_array_item'
-const pseudoAssignArrayItemContainerName = 'pseudo_assign_array_item_container'
+const PSEUDO_ARRAY_ASSIGNMENT_NAME = 'pseudo_array_assignment'
+const PSEUDO_ARRAY_ASSIGNMENT_MUTATOR_NAME = 'pseudo_array_assignment_mutator'
+const PSEUDO_ARRAY_ASSIGNMENT_ITEM_NAME = 'pseudo_array_assignment_item'
+const PSEUDO_ARRAY_ASSIGNMENT_ITEM_CONTAINER_NAME =
+  'pseudo_array_assignment_item_container'
 
-export const pseudoAssignArrayMixin: any = {
+const pseudoAssignArrayMixin: any = {
   saveExtraState() {
     return {
       itemCount: this.itemCount_,
@@ -42,13 +43,13 @@ export const pseudoAssignArrayMixin: any = {
   },
   decompose(workspace: Blockly.Workspace): Blockly.Block {
     let containerBlock = workspace.newBlock(
-      pseudoAssignArrayItemContainerName
+      PSEUDO_ARRAY_ASSIGNMENT_ITEM_CONTAINER_NAME
     ) as Blockly.BlockSvg
     containerBlock.initSvg()
     let connection = containerBlock.getInput('ITEMS')?.connection
     for (let i = 0; i < this.itemCount_; ++i) {
       const itemBlock = workspace.newBlock(
-        pseudoAssignArrayItemName
+        PSEUDO_ARRAY_ASSIGNMENT_ITEM_NAME
       ) as Blockly.BlockSvg
       itemBlock.initSvg()
       connection?.connect(itemBlock.previousConnection)
@@ -89,38 +90,46 @@ export const pseudoAssignArrayMixin: any = {
   },
 }
 
-export const pseudoAssignArrayItemBlocks: { [key: string]: BlockDefinition }[] =
-  [
-    {
-      type: pseudoAssignArrayItemContainerName,
-      message0: '%1',
-      args0: [
-        {
-          type: 'input_statement',
-          name: 'ITEMS',
-        },
-      ],
-      colour: 210,
-      tooltip: '',
-      helpUrl: '',
-    },
-    {
-      type: pseudoAssignArrayItemName,
-      message0: '要素を追加',
-      inputsInline: true,
-      previousStatement: null,
-      nextStatement: null,
-      colour: 210,
-      tooltip: '要素を追加して、配列の大きさを変えます。',
-      helpUrl: '',
-    },
-  ]
+Blockly.Extensions.registerMutator(
+  PSEUDO_ARRAY_ASSIGNMENT_MUTATOR_NAME,
+  pseudoAssignArrayMixin,
+  undefined,
+  [PSEUDO_ARRAY_ASSIGNMENT_ITEM_NAME]
+)
 
-export const pseudoAssignArrayBlock: { [key: string]: BlockDefinition } = {
-  [pseudoAssignArrayName]: {
+const pseudoAssignArrayItemBlocks: { [key: string]: BlockDefinition }[] = [
+  {
+    type: PSEUDO_ARRAY_ASSIGNMENT_ITEM_CONTAINER_NAME,
+    message0: '%1',
+    args0: [
+      {
+        type: 'input_statement',
+        name: 'ITEMS',
+      },
+    ],
+    colour: 210,
+    tooltip: '',
+    helpUrl: '',
+  },
+  {
+    type: PSEUDO_ARRAY_ASSIGNMENT_ITEM_NAME,
+    message0: '要素を追加',
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    colour: 210,
+    tooltip: '要素を追加して、配列の大きさを変えます。',
+    helpUrl: '',
+  },
+]
+
+Blockly.defineBlocksWithJsonArray(pseudoAssignArrayItemBlocks)
+
+const pseudoAssignArrayBlock: { [key: string]: BlockDefinition } = {
+  [PSEUDO_ARRAY_ASSIGNMENT_NAME]: {
     init() {
       this.jsonInit({
-        type: pseudoAssignArrayName,
+        type: PSEUDO_ARRAY_ASSIGNMENT_NAME,
         message0: '%1 = [',
         args0: [
           {
@@ -135,10 +144,12 @@ export const pseudoAssignArrayBlock: { [key: string]: BlockDefinition } = {
         colour: 210,
         tooltip: '配列を作成します。',
         helpUrl: '',
-        mutator: pseudoAssignArrayMutatorName,
+        mutator: PSEUDO_ARRAY_ASSIGNMENT_MUTATOR_NAME,
       })
       this.itemCount_ = 5
       this.updateShape_()
     },
   },
 }
+
+Blockly.common.defineBlocks(pseudoAssignArrayBlock)
