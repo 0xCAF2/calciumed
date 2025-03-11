@@ -4,7 +4,7 @@ import { BlockDefinition } from 'blockly/core/blocks'
 import { allTypesForCheck } from '../block/type-check/all-types'
 import { tooltipManager } from '../constant-manager'
 
-export const CALCIUM_ASSIGNMENT_NAME = 'calcium_assignment'
+const CALCIUM_ASSIGNMENT_NAME = 'calcium_assignment'
 
 const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
   [CALCIUM_ASSIGNMENT_NAME]: {
