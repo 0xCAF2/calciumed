@@ -4,10 +4,10 @@ import { BlockDefinition } from 'blockly/core/blocks'
 import { parseNumber } from '../util/parse-number'
 import { tooltipManager } from '../../constant-manager'
 
-export const calciumNumberName = 'calcium_number'
+const CALCIUM_NUMBER_NAME = 'calcium_number'
 
-export const calciumNumberBlock: { [key: string]: BlockDefinition } = {
-  [calciumNumberName]: {
+const calciumNumberBlock: { [key: string]: BlockDefinition } = {
+  [CALCIUM_NUMBER_NAME]: {
     init() {
       this.appendDummyInput().appendField(
         new Blockly.FieldTextInput('0', function (newValue) {
@@ -26,3 +26,5 @@ export const calciumNumberBlock: { [key: string]: BlockDefinition } = {
     },
   },
 }
+
+Blockly.common.defineBlocks(calciumNumberBlock)
