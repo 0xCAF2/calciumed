@@ -2,10 +2,10 @@ import * as Blockly from 'blockly/core'
 // @ts-ignore
 import { Shape } from 'blockly/core/renderers/common/constants'
 
-export const calciumRendererName = 'calcium_renderer'
+export const CALCIUM_RENDERER_NAME = 'calcium_renderer'
 
 // extends zelos
-export class CalciumRenderer extends Blockly.zelos.Renderer {
+class CalciumRenderer extends Blockly.zelos.Renderer {
   constructor(name: string) {
     super(name)
   }
@@ -36,3 +36,5 @@ class CalciumConstantProvider extends Blockly.zelos.ConstantProvider {
     return this.ROUNDED!
   }
 }
+
+Blockly.blockRendering.register(CALCIUM_RENDERER_NAME, CalciumRenderer)

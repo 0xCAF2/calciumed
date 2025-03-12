@@ -3,8 +3,6 @@ import * as Blockly from 'blockly'
 import './message'
 import './tooltip'
 
-import { calciumNumberBlock } from '../../block/python/number'
-
 import '../../block/assignment'
 import '../../block/compound-assignment'
 
@@ -22,25 +20,17 @@ import * as Lang from 'blockly/msg/ja'
 // @ts-ignore
 Blockly.setLocale(Lang)
 
-import {
-  CalciumRenderer,
-  calciumRendererName,
-} from '../../editor/calcium-renderer'
+import { CALCIUM_RENDERER_NAME } from '../../editor/calcium-renderer'
 
 import { buildEditor } from '../../editor'
 
 export function buildCalciumEditor(parent: HTMLElement) {
-  ;[calciumNumberBlock].forEach((block) => {
-    Blockly.common.defineBlocks(block)
-  })
-
   // renderer
-  Blockly.blockRendering.register(calciumRendererName, CalciumRenderer)
 
   buildEditor({
     parent,
     options: {
-      renderer: calciumRendererName,
+      renderer: CALCIUM_RENDERER_NAME,
       toolboxUrl: 'toolbox_ja-jp.json',
     },
   })
