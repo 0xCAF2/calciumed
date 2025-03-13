@@ -2,6 +2,7 @@
     {
         "基本": [
             "pseudo_number",
+            "calcium_arithmetic",
             "calcium_assignment",
             "calcium_compound_assignment",
             "pseudo_array_assignment",

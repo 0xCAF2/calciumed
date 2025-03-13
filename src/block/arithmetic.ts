@@ -1,10 +1,12 @@
+import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
+import { tooltipManager } from '../constant-manager'
 
-export const calciumArithmeticName = 'calcium_arithmetic'
+const CALCIUM_ARITHMETIC_NAME = 'calcium_arithmetic'
 
-export const calciumArithmetic: BlockDefinition = {
-  type: 'calcium_arithmetic',
+const calciumArithmetic: BlockDefinition = {
+  type: CALCIUM_ARITHMETIC_NAME,
   message0: '%1 %2 %3',
   args0: [
     {
@@ -50,6 +52,8 @@ export const calciumArithmetic: BlockDefinition = {
   inputsInline: true,
   output: 'calcium_arithmetic',
   colour: 120,
-  tooltip: '%{BKY_CALCIUM_ARITHMETIC_TOOLTIP}',
+  tooltip: tooltipManager.getValue('CALCIUM_ARITHMETIC_TOOLTIP'),
   helpUrl: '',
 }
+
+Blockly.defineBlocksWithJsonArray([calciumArithmetic])
