@@ -6,6 +6,8 @@ import './tooltip'
 import '../../block/assignment'
 import '../../block/compound-assignment'
 
+import '../../block/attribute'
+
 import '../../block/arithmetic'
 
 import '../../block/pseudo/array'

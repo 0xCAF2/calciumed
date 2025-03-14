@@ -4,7 +4,7 @@ class ConstantManager {
     this.values = values
   }
   getValue(key: string): string {
-    return this.values[key]
+    return this.values[key] ?? ''
   }
 }
 
