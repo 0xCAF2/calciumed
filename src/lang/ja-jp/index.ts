@@ -6,9 +6,10 @@ import './tooltip'
 import '../../block/assignment'
 import '../../block/compound-assignment'
 
+import '../../block/arithmetic'
 import '../../block/attribute'
 
-import '../../block/arithmetic'
+import '../../block/break_continue'
 
 import '../../block/pseudo/array'
 import '../../block/pseudo/number'
