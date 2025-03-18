@@ -26,6 +26,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
     contents: [
       {
         kind: 'block',
+        type: 'calcium_expr_stmt',
+      },
+      {
+        kind: 'block',
         type: 'calcium_break_continue',
       },
       {
