@@ -40,6 +40,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
         kind: 'block',
         type: 'calcium_def_method',
       },
+      {
+        kind: 'block',
+        type: 'calcium_class_def',
+      },
     ],
   },
 ]

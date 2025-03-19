@@ -1,3 +1,4 @@
+import './class-def'
 import './def'
 import './expr-stmt'
 import './list'
