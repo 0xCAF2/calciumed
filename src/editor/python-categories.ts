@@ -18,6 +18,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
         kind: 'block',
         type: 'calcium_list',
       },
+      {
+        kind: 'block',
+        type: 'calcium_dict',
+      },
     ],
   },
   {

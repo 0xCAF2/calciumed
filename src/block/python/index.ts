@@ -1,5 +1,6 @@
 import './class-def'
 import './def'
+import './dict'
 import './expr-stmt'
 import './list'
 import './number'
