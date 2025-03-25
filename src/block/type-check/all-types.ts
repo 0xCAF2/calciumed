@@ -1,7 +1,5 @@
-import { calciumVariableName } from '../variable'
-
 export const allTypesForCheck = [
-  calciumVariableName,
+  'calcium_variable',
   'calcium_attribute',
   'calcium_subscript',
   'calcium_call',

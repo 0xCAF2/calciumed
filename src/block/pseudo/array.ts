@@ -1,7 +1,6 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { calciumVariableName } from '../variable'
 import { allTypesForCheck } from '../type-check/all-types'
 
 const PSEUDO_ARRAY_ASSIGNMENT_NAME = 'pseudo_array_assignment'
@@ -135,7 +134,7 @@ const pseudoAssignArrayBlock: { [key: string]: BlockDefinition } = {
           {
             type: 'input_value',
             name: 'VAR',
-            check: [calciumVariableName],
+            check: ['calcium_variable'],
           },
         ],
         inputsInline: true,
