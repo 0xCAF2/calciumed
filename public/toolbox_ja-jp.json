@@ -11,6 +11,7 @@
     },
     {
         "条件分岐": [
+            "calcium_logical",
             "pseudo_if"
         ]
     },

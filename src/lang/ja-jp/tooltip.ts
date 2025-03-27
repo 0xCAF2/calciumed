@@ -15,6 +15,7 @@ const CALCIUM_IMPORT_TOOLTIP = 'Python のモジュールを使えるように�
 const CALCIUM_KWARG_TOOLTIP = '関数に渡すキーワード引数です。'
 const CALCIUM_LIST_TOOLTIP = 'リストを作成します。'
 const CALCIUM_LIST_ITEM_TOOLTIP = 'リストの要素を追加します。'
+const CALCIUM_LOGICAL_TOOLTIP = '論理演算を行います。'
 const CALCIUM_NUMBER_TOOLTIP = '数値を表します。'
 
 const tooltips: ConstantValues = {
@@ -32,6 +33,7 @@ const tooltips: ConstantValues = {
   CALCIUM_KWARG_TOOLTIP,
   CALCIUM_LIST_TOOLTIP,
   CALCIUM_LIST_ITEM_TOOLTIP,
+  CALCIUM_LOGICAL_TOOLTIP,
   CALCIUM_NUMBER_TOOLTIP,
 }
 

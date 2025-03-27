@@ -8,6 +8,7 @@ import '../../block/compound-assignment'
 
 import '../../block/arithmetic'
 import '../../block/attribute'
+import '../../block/logical'
 
 import '../../block/break_continue'
 
