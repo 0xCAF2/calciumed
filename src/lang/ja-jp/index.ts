@@ -12,6 +12,8 @@ import '../../block/logical'
 
 import '../../block/break_continue'
 
+import '../../block/return'
+
 import '../../block/pseudo/array'
 import '../../block/pseudo/number'
 import '../../block/pseudo/print'

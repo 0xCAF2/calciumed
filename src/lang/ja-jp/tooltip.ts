@@ -17,6 +17,7 @@ const CALCIUM_LIST_TOOLTIP = 'リストを作成します。'
 const CALCIUM_LIST_ITEM_TOOLTIP = 'リストの要素を追加します。'
 const CALCIUM_LOGICAL_TOOLTIP = '論理演算を行います。'
 const CALCIUM_NUMBER_TOOLTIP = '数値を表します。'
+const CALCIUM_RETURN_TOOLTIP = '関数を終了します。'
 
 const tooltips: ConstantValues = {
   CALCIUM_ASSIGNMENT_TOOLTIP,
@@ -35,6 +36,7 @@ const tooltips: ConstantValues = {
   CALCIUM_LIST_ITEM_TOOLTIP,
   CALCIUM_LOGICAL_TOOLTIP,
   CALCIUM_NUMBER_TOOLTIP,
+  CALCIUM_RETURN_TOOLTIP,
 }
 
 tooltipManager.setValues(tooltips)
