@@ -1,3 +1,4 @@
+import './boolean'
 import './class-def'
 import './def'
 import './dict'

@@ -1,6 +1,7 @@
 import { ConstantValues, tooltipManager } from '../../constant-manager'
 
 const CALCIUM_ASSIGNMENT_TOOLTIP = '変数に値を代入します。'
+const CALCIUM_BOOLEAN_TOOLTIP = '真偽値を表します。'
 const CALCIUM_BREAK_CONTINUE_TOOLTIP =
   'ループを終了するか、次のループに進みます。'
 const CALCIUM_CLASS_DEF_TOOLTIP = 'クラスを定義します。'
@@ -23,6 +24,7 @@ const CALCIUM_SUBSCRIPT_TOOLTIP = 'リストや辞書の要素を取り出しま
 
 const tooltips: ConstantValues = {
   CALCIUM_ASSIGNMENT_TOOLTIP,
+  CALCIUM_BOOLEAN_TOOLTIP,
   CALCIUM_BREAK_CONTINUE_TOOLTIP,
   CALCIUM_CLASS_DEF_TOOLTIP,
   CALCIUM_COMPOUND_ASSIGNMENT_TOOLTIP,

@@ -24,6 +24,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       },
       {
         kind: 'block',
+        type: 'calcium_boolean',
+      },
+      {
+        kind: 'block',
         type: 'calcium_attribute',
       },
       {
