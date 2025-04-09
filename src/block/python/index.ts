@@ -1,5 +1,6 @@
 import './boolean'
 import './class-def'
+import './comma'
 import './def'
 import './dict'
 import './expr-stmt'
