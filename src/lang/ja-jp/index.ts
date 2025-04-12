@@ -10,6 +10,7 @@ import '../../block/arithmetic'
 import '../../block/attribute'
 import '../../block/logical'
 import '../../block/subscript'
+import '../../block/not'
 
 import '../../block/break_continue'
 

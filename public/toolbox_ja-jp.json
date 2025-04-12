@@ -13,6 +13,7 @@
     {
         "条件分岐": [
             "calcium_logical",
+            "calcium_not",
             "pseudo_if"
         ]
     },

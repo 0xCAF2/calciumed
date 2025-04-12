@@ -19,6 +19,7 @@ const CALCIUM_LIST_TOOLTIP = 'リストを作成します。'
 const CALCIUM_LIST_ITEM_TOOLTIP = 'リストの要素を追加します。'
 const CALCIUM_LOGICAL_TOOLTIP = '論理演算を行います。'
 const CALCIUM_NONE_TOOLTIP = '値がないことを表します。'
+const CALCIUM_NOT_TOOLTIP = '否定を表します。'
 const CALCIUM_NUMBER_TOOLTIP = '数値を表します。'
 const CALCIUM_RETURN_TOOLTIP = '関数を終了します。'
 const CALCIUM_STR_TOOLTIP = '文字列を表します。'
@@ -43,6 +44,7 @@ const tooltips: ConstantValues = {
   CALCIUM_LIST_ITEM_TOOLTIP,
   CALCIUM_LOGICAL_TOOLTIP,
   CALCIUM_NONE_TOOLTIP,
+  CALCIUM_NOT_TOOLTIP,
   CALCIUM_NUMBER_TOOLTIP,
   CALCIUM_RETURN_TOOLTIP,
   CALCIUM_STR_TOOLTIP,
