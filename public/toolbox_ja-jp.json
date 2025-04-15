@@ -1,27 +1,22 @@
 [
     {
         "基本": [
-            "pseudo_number",
             "calcium_arithmetic",
             "calcium_subscript",
             "calcium_assignment",
-            "calcium_compound_assignment",
-            "pseudo_array_assignment",
-            "pseudo_print"
+            "calcium_compound_assignment"
         ]
     },
     {
         "条件分岐": [
             "calcium_logical",
             "calcium_not",
-            "pseudo_if"
+            "calcium_if"
         ]
     },
     {
         "繰り返し": [
-            "pseudo_for_increment",
-            "pseudo_for_decrement",
-            "pseudo_while"
+            "calcium_while"
         ]
     }
 ]

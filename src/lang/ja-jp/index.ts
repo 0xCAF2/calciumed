@@ -16,15 +16,6 @@ import '../../block/break_continue'
 
 import '../../block/return'
 
-import '../../block/pseudo/array'
-import '../../block/pseudo/number'
-import '../../block/pseudo/print'
-
-import '../../block/pseudo/if'
-
-import '../../block/pseudo/for'
-import '../../block/pseudo/while'
-
 import * as Lang from 'blockly/msg/ja'
 
 // @ts-ignore

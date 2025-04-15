@@ -1,15 +1,16 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
+import { tooltipManager } from '../../constant-manager'
 
-const PSEUDO_IF_NAME = 'pseudo_if'
-const PSEUDO_IF_CONTAINER_NAME = 'pseudo_if_container'
-const PSEUDO_IF_ELSEIF_NAME = 'pseudo_if_else_if'
-const PSEUDO_IF_ELSE_NAME = 'pseudo_if_else'
+const CALCIUM_IF_NAME = 'calcium_if'
+const CALCIUM_IF_CONTAINER_NAME = 'calcium_if_container'
+const CALCIUM_IF_ELSEIF_NAME = 'calcium_if_else_if'
+const CALCIUM_IF_ELSE_NAME = 'calcium_if_else'
 
-const PSEUDO_IF_MUTATOR_NAME = 'pseudo_if_mutator'
+const CALCIUM_IF_MUTATOR_NAME = 'calcium_if_mutator'
 
-const pseudoIfMutatorMixin: any = {
+const calciumIfMutatorMixin: any = {
   saveExtraState(): any {
     return {
       elseIfCount: this.elseIfCount_,
@@ -31,12 +32,12 @@ const pseudoIfMutatorMixin: any = {
 
     while (clauseBlock && !clauseBlock.isInsertionMarker()) {
       switch (clauseBlock.type) {
-        case PSEUDO_IF_ELSEIF_NAME:
+        case CALCIUM_IF_ELSEIF_NAME:
           this.elseIfCount_++
           valueConnections.push(clauseBlock.valueConnection_)
           statementConnections.push(clauseBlock.statementConnection_)
           break
-        case PSEUDO_IF_ELSE_NAME:
+        case CALCIUM_IF_ELSE_NAME:
           this.elseCount_++
           elseStatementConnection = clauseBlock.statementConnection_
           break
@@ -55,13 +56,13 @@ const pseudoIfMutatorMixin: any = {
   },
   decompose(workspace: Blockly.Workspace) {
     const containerBlock = workspace.newBlock(
-      PSEUDO_IF_CONTAINER_NAME
+      CALCIUM_IF_CONTAINER_NAME
     ) as Blockly.BlockSvg
     containerBlock.initSvg()
     let connection = containerBlock.nextConnection
     for (let i = 1; i < this.elseIfCount_; ++i) {
       const elseIfBlock = workspace.newBlock(
-        PSEUDO_IF_ELSEIF_NAME
+        CALCIUM_IF_ELSEIF_NAME
       ) as Blockly.BlockSvg
       elseIfBlock.initSvg()
       connection.connect(elseIfBlock.previousConnection)
@@ -69,7 +70,7 @@ const pseudoIfMutatorMixin: any = {
     }
     if (this.elseCount_) {
       const elseBlock = workspace.newBlock(
-        PSEUDO_IF_ELSE_NAME
+        CALCIUM_IF_ELSE_NAME
       ) as Blockly.BlockSvg
       elseBlock.initSvg()
       connection.connect(elseBlock.previousConnection)
@@ -117,7 +118,7 @@ const pseudoIfMutatorMixin: any = {
     let i = 1
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case PSEUDO_IF_ELSEIF_NAME:
+        case CALCIUM_IF_ELSEIF_NAME:
           const inputIf = this.getInput('IF' + i)
           const inputDo = this.getInput('DO' + i)
           clauseBlock.valueConnection_ =
@@ -126,7 +127,7 @@ const pseudoIfMutatorMixin: any = {
             inputDo && inputDo.connection.targetConnection
           ++i
           break
-        case PSEUDO_IF_ELSE_NAME:
+        case CALCIUM_IF_ELSE_NAME:
           const elseDo = this.getInput('ELSE')
           clauseBlock.statementConnection_ =
             elseDo && elseDo.connection.targetConnection
@@ -150,7 +151,7 @@ const pseudoIfMutatorMixin: any = {
     let i = 1
     while (this.getInput('IF' + i)) {
       this.removeInput('IF' + i)
-      this.removeInput(':' + i)
+      this.removeInput('ELIF' + i)
       this.removeInput('DO' + i)
       ++i
     }
@@ -158,60 +159,60 @@ const pseudoIfMutatorMixin: any = {
     for (let i = 1; i < this.elseIfCount_ + 1; ++i) {
       this.appendValueInput('IF' + i)
         .setCheck(['Boolean'])
-        .appendField('そうでなくもし')
-      this.appendDummyInput(':' + i).appendField('ならば:')
+        .appendField('elif')
+      this.appendDummyInput('ELIF' + i).appendField(':')
       this.appendStatementInput('DO' + i).appendField('')
     }
     if (this.elseCount_) {
-      this.appendDummyInput('ELSE_LABEL').appendField('そうでなければ:')
+      this.appendDummyInput('ELSE_LABEL').appendField('else:')
       this.appendStatementInput('ELSE').appendField('')
     }
   },
 }
 
 Blockly.Extensions.registerMutator(
-  PSEUDO_IF_MUTATOR_NAME,
-  pseudoIfMutatorMixin,
+  CALCIUM_IF_MUTATOR_NAME,
+  calciumIfMutatorMixin,
   undefined,
-  [PSEUDO_IF_ELSEIF_NAME, PSEUDO_IF_ELSE_NAME]
+  [CALCIUM_IF_ELSEIF_NAME, CALCIUM_IF_ELSE_NAME]
 )
 
-const pseudoIfChildBlocks: BlockDefinition[] = [
+const calciumIfChildBlocks: BlockDefinition[] = [
   {
-    type: PSEUDO_IF_CONTAINER_NAME,
-    message0: 'もし',
+    type: CALCIUM_IF_CONTAINER_NAME,
+    message0: 'if',
     nextStatement: null,
     enableContextMenu: false,
     colour: 210,
-    tooltip: '条件を指定します。',
+    tooltip: tooltipManager.getValue('CALCIUM_IF_CONTAINER_TOOLTIP'),
   },
   {
-    type: PSEUDO_IF_ELSEIF_NAME,
-    message0: 'そうでなくもし',
+    type: CALCIUM_IF_ELSEIF_NAME,
+    message0: 'elif',
     previousStatement: null,
     nextStatement: null,
     enableContextMenu: false,
     colour: 210,
-    tooltip: '追加の条件を指定します。',
+    tooltip: tooltipManager.getValue('CALCIUM_IF_ELSEIF_TOOLTIP'),
   },
   {
-    type: PSEUDO_IF_ELSE_NAME,
-    message0: 'そうでなければ',
+    type: CALCIUM_IF_ELSE_NAME,
+    message0: 'else',
     previousStatement: null,
     enableContextMenu: false,
     colour: 210,
-    tooltip: '条件を満たさなかった場合を指定します。',
+    tooltip: tooltipManager.getValue('CALCIUM_IF_ELSE_TOOLTIP'),
   },
 ]
 
-Blockly.defineBlocksWithJsonArray(pseudoIfChildBlocks)
+Blockly.defineBlocksWithJsonArray(calciumIfChildBlocks)
 
-const pseudoIfBlock: { [key: string]: BlockDefinition } = {
-  [PSEUDO_IF_NAME]: {
+const calciumIfBlock: { [key: string]: BlockDefinition } = {
+  [CALCIUM_IF_NAME]: {
     init() {
       this.jsonInit({
-        type: PSEUDO_IF_NAME,
-        message0: 'もし %1 ならば:',
+        type: CALCIUM_IF_NAME,
+        message0: 'if %1:',
         args0: [
           {
             type: 'input_value',
@@ -229,8 +230,9 @@ const pseudoIfBlock: { [key: string]: BlockDefinition } = {
         previousStatement: null,
         nextStatement: null,
         colour: 210,
-        tooltip: '条件によって、実行する文を変えます。',
-        mutator: PSEUDO_IF_MUTATOR_NAME,
+        tooltip: tooltipManager.getValue('CALCIUM_IF_TOOLTIP'),
+        mutator: CALCIUM_IF_MUTATOR_NAME,
+        helpUrl: '',
       })
       this.elseIfCount_ = 0
       this.elseCount_ = 0
@@ -238,4 +240,4 @@ const pseudoIfBlock: { [key: string]: BlockDefinition } = {
   },
 }
 
-Blockly.common.defineBlocks(pseudoIfBlock)
+Blockly.common.defineBlocks(calciumIfBlock)
