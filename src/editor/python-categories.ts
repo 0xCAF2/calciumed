@@ -4,7 +4,7 @@ import '../block/python'
 export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
     kind: 'category',
-    name: 'Python1',
+    name: 'Python A',
     contents: [
       {
         kind: 'block',
@@ -58,8 +58,12 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   },
   {
     kind: 'category',
-    name: 'Python2',
+    name: 'Python B',
     contents: [
+      {
+        kind: 'block',
+        type: 'calcium_print',
+      },
       {
         kind: 'block',
         type: 'calcium_expr_stmt',

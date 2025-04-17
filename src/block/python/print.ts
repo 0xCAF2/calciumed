@@ -2,13 +2,14 @@ import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
 import { allTypesForCheck } from '../type-check/all-types'
+import { messageManager, tooltipManager } from '../../constant-manager'
 
-const PSEUDO_PRINT_NAME = 'pseudo_print'
-const PSEUDO_PRINT_ARG_NAME = 'pseudo_print_arg'
-const PSEUDO_PRINT_MUTATOR_NAME = 'pseudo_print_mutator'
-const pseudoPrintArgsContainerName = 'pseudo_print_args_container'
+const CALCIUM_PRINT_NAME = 'calcium_print'
+const CALCIUM_PRINT_ARG_NAME = 'calcium_print_arg'
+const CALCIUM_PRINT_MUTATOR_NAME = 'calcium_print_mutator'
+const calciumPrintArgsContainerName = 'calcium_print_args_container'
 
-const pseudoPrintMutatorMixin: any = {
+const calciumPrintMutatorMixin: any = {
   compose(containerBlock: Blockly.Block) {
     let itemBlock: any = containerBlock.getInputTargetBlock('ARGS')
     const connections: any[] = []
@@ -31,13 +32,13 @@ const pseudoPrintMutatorMixin: any = {
   },
   decompose(workspace: Blockly.Workspace): Blockly.Block {
     const containerBlock = workspace.newBlock(
-      pseudoPrintArgsContainerName
+      calciumPrintArgsContainerName
     ) as Blockly.BlockSvg
     containerBlock.initSvg()
     let connection = containerBlock.getInput('ARGS')?.connection
     for (let i = 0; i < this.countOfArguments; ++i) {
       const itemBlock = workspace.newBlock(
-        PSEUDO_PRINT_ARG_NAME
+        CALCIUM_PRINT_ARG_NAME
       ) as Blockly.BlockSvg
       itemBlock.initSvg()
       connection?.connect(itemBlock.previousConnection)
@@ -89,25 +90,25 @@ const pseudoPrintMutatorMixin: any = {
 }
 
 Blockly.Extensions.registerMutator(
-  PSEUDO_PRINT_MUTATOR_NAME,
-  pseudoPrintMutatorMixin,
+  CALCIUM_PRINT_MUTATOR_NAME,
+  calciumPrintMutatorMixin,
   undefined,
-  [PSEUDO_PRINT_ARG_NAME]
+  [CALCIUM_PRINT_ARG_NAME]
 )
 
-const pseudoPrintArgBlocks: BlockDefinition[] = [
+const calciumPrintArgBlocks: BlockDefinition[] = [
   {
-    type: PSEUDO_PRINT_ARG_NAME,
-    message0: '引数を追加',
+    type: CALCIUM_PRINT_ARG_NAME,
+    message0: messageManager.getValue('CALCIUM_PRINT_ARG_MESSAGE'),
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 210,
-    tooltip: '表示する引数を追加します。',
+    colour: 240,
+    tooltip: tooltipManager.getValue('CALCIUM_PRINT_ARG_TOOLTIP'),
     helpUrl: '',
   },
   {
-    type: pseudoPrintArgsContainerName,
+    type: calciumPrintArgsContainerName,
     message0: '%1',
     args0: [
       {
@@ -115,27 +116,27 @@ const pseudoPrintArgBlocks: BlockDefinition[] = [
         name: 'ARGS',
       },
     ],
-    colour: 210,
+    colour: 240,
     tooltip: '',
     helpUrl: '',
   },
 ]
 
-Blockly.defineBlocksWithJsonArray(pseudoPrintArgBlocks)
+Blockly.defineBlocksWithJsonArray(calciumPrintArgBlocks)
 
-const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
-  [PSEUDO_PRINT_NAME]: {
+const calciumPrintBlock: { [key: string]: BlockDefinition } = {
+  [CALCIUM_PRINT_NAME]: {
     init() {
       this.jsonInit({
-        type: PSEUDO_PRINT_NAME,
-        message0: '表示する (',
+        type: CALCIUM_PRINT_NAME,
+        message0: 'print (',
         inputsInline: true,
         previousStatement: null,
         nextStatement: null,
-        colour: 210,
-        tooltip: '指定した内容を表示します。',
+        colour: 240,
+        tooltip: tooltipManager.getValue('CALCIUM_PRINT_TOOLTIP'),
         helpUrl: '',
-        mutator: PSEUDO_PRINT_MUTATOR_NAME,
+        mutator: CALCIUM_PRINT_MUTATOR_NAME,
       })
       this.countOfArguments = 1
       this.updateShape()
@@ -143,4 +144,4 @@ const pseudoPrintBlock: { [key: string]: BlockDefinition } = {
   },
 }
 
-Blockly.common.defineBlocks(pseudoPrintBlock)
+Blockly.common.defineBlocks(calciumPrintBlock)
