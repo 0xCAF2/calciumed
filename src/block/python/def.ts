@@ -132,7 +132,7 @@ const calciumDefParamBlocks: BlockDefinition[] = [
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 120,
+    colour: 240,
     tooltip: '',
     helpUrl: '',
   },
