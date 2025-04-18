@@ -31,6 +31,7 @@ const CALCIUM_RELATIONAL_TOOLTIP = '値を比較します。'
 const CALCIUM_RETURN_TOOLTIP = '関数を終了します。'
 const CALCIUM_STR_TOOLTIP = '文字列を表します。'
 const CALCIUM_SUBSCRIPT_TOOLTIP = 'リストや辞書の要素を取り出します。'
+const CALCIUM_WHILE_TOOLTIP = '条件が真の間、繰り返し実行します。'
 
 const tooltips: ConstantValues = {
   CALCIUM_ASSIGNMENT_TOOLTIP,
@@ -63,6 +64,7 @@ const tooltips: ConstantValues = {
   CALCIUM_RETURN_TOOLTIP,
   CALCIUM_STR_TOOLTIP,
   CALCIUM_SUBSCRIPT_TOOLTIP,
+  CALCIUM_WHILE_TOOLTIP,
 }
 
 tooltipManager.setValues(tooltips)

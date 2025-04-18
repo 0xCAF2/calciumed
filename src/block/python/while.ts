@@ -1,12 +1,13 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
+import { tooltipManager } from '../../constant-manager'
 
-const PSEUDO_WHILE_NAME = 'pseudo_while'
+const CALCIUM_WHILE_NAME = 'calcium_while'
 
-const pseudoWhile: BlockDefinition = {
-  type: PSEUDO_WHILE_NAME,
-  message0: '%1 の間繰り返す: %2 %3',
+const calciumWhile: BlockDefinition = {
+  type: CALCIUM_WHILE_NAME,
+  message0: 'while %1 : %2 %3',
   args0: [
     {
       type: 'input_value',
@@ -24,9 +25,9 @@ const pseudoWhile: BlockDefinition = {
   inputsInline: true,
   previousStatement: null,
   nextStatement: null,
-  colour: 210,
-  tooltip: '条件を満たす間、繰り返します。',
+  colour: 240,
+  tooltip: tooltipManager.getValue('CALCIUM_WHILE_TOOLTIP'),
   helpUrl: '',
 }
 
-Blockly.defineBlocksWithJsonArray([pseudoWhile])
+Blockly.defineBlocksWithJsonArray([calciumWhile])

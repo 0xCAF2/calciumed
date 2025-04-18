@@ -74,6 +74,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       },
       {
         kind: 'block',
+        type: 'calcium_while',
+      },
+      {
+        kind: 'block',
         type: 'calcium_break_continue',
       },
       {
