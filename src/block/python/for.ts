@@ -24,7 +24,6 @@ const calciumForBlock: BlockDefinition = {
         'calcium_call',
         'String',
         'Array',
-        'pseudo_options',
       ],
     },
     {

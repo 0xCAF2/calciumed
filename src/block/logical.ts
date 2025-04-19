@@ -19,7 +19,6 @@ const calciumLogical: BlockDefinition = {
         'calcium_call',
         'calcium_subscript',
         'calcium_arithmetic',
-        'pseudo_options',
       ],
     },
     {
@@ -40,7 +39,6 @@ const calciumLogical: BlockDefinition = {
         'calcium_call',
         'calcium_subscript',
         'calcium_arithmetic',
-        'pseudo_options',
       ],
     },
   ],

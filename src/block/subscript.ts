@@ -25,7 +25,6 @@ const calciumSubscript: BlockDefinition = {
         'calcium_call',
         'calcium_arithmetic',
         'calcium_slice',
-        'pseudo_options',
       ],
     },
   ],

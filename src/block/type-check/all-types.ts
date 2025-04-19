@@ -11,5 +11,4 @@ export const allTypesForCheck = [
   'calcium_none',
   'calcium_not',
   'Boolean',
-  'pseudo_options',
 ]
