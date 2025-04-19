@@ -1,7 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { tooltipManager } from '../constant-manager'
+import { tooltipManager } from '../../constant-manager'
 
 const CALCIUM_VARIABLE_NAME = 'calcium_variable'
 

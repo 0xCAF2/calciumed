@@ -1,8 +1,8 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
-import { allTypesForCheck } from '../block/type-check/all-types'
-import { tooltipManager } from '../constant-manager'
+import { allTypesForCheck } from '../type-check/all-types'
+import { tooltipManager } from '../../constant-manager'
 
 const CALCIUM_ASSIGNMENT_NAME = 'calcium_assignment'
 
