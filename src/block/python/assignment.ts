@@ -32,7 +32,7 @@ const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
         inputsInline: true,
         previousStatement: null,
         nextStatement: null,
-        colour: 210,
+        colour: 240,
         tooltip: tooltipManager.getValue('CALCIUM_ASSIGNMENT_TOOLTIP'),
         helpUrl: '',
       })

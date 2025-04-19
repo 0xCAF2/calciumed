@@ -37,7 +37,7 @@ const compoundAssignmentBlock: { [key: string]: BlockDefinition } = {
         inputsInline: true,
         previousStatement: null,
         nextStatement: null,
-        colour: 210,
+        colour: 240,
         tooltip: '',
         helpUrl: '',
       })

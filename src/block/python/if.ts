@@ -183,7 +183,7 @@ const calciumIfChildBlocks: BlockDefinition[] = [
     message0: 'if',
     nextStatement: null,
     enableContextMenu: false,
-    colour: 210,
+    colour: 240,
     tooltip: tooltipManager.getValue('CALCIUM_IF_CONTAINER_TOOLTIP'),
   },
   {
@@ -192,7 +192,7 @@ const calciumIfChildBlocks: BlockDefinition[] = [
     previousStatement: null,
     nextStatement: null,
     enableContextMenu: false,
-    colour: 210,
+    colour: 240,
     tooltip: tooltipManager.getValue('CALCIUM_IF_ELSEIF_TOOLTIP'),
   },
   {
@@ -200,7 +200,7 @@ const calciumIfChildBlocks: BlockDefinition[] = [
     message0: 'else',
     previousStatement: null,
     enableContextMenu: false,
-    colour: 210,
+    colour: 240,
     tooltip: tooltipManager.getValue('CALCIUM_IF_ELSE_TOOLTIP'),
   },
 ]
@@ -229,7 +229,7 @@ const calciumIfBlock: { [key: string]: BlockDefinition } = {
         ],
         previousStatement: null,
         nextStatement: null,
-        colour: 210,
+        colour: 240,
         tooltip: tooltipManager.getValue('CALCIUM_IF_TOOLTIP'),
         mutator: CALCIUM_IF_MUTATOR_NAME,
         helpUrl: '',
