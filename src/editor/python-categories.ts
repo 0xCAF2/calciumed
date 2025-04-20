@@ -1,5 +1,5 @@
 import * as Blockly from 'blockly'
-import '../block/python'
+import '../block/calcium'
 
 export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
   {
@@ -67,6 +67,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       {
         kind: 'block',
         type: 'calcium_expr_stmt',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_if',
       },
       {
         kind: 'block',
