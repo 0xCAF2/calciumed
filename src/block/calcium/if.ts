@@ -5,7 +5,7 @@ import { tooltipManager } from '../../constant-manager'
 
 const CALCIUM_IF_NAME = 'calcium_if'
 const CALCIUM_IF_CONTAINER_NAME = 'calcium_if_container'
-const CALCIUM_IF_ELSEIF_NAME = 'calcium_if_else_if'
+const CALCIUM_IF_ELIF_NAME = 'calcium_if_elif'
 const CALCIUM_IF_ELSE_NAME = 'calcium_if_else'
 
 const CALCIUM_IF_MUTATOR_NAME = 'calcium_if_mutator'
@@ -13,18 +13,18 @@ const CALCIUM_IF_MUTATOR_NAME = 'calcium_if_mutator'
 const calciumIfMutatorMixin: any = {
   saveExtraState(): any {
     return {
-      elseIfCount: this.elseIfCount_,
+      elifCount: this.elifCount_,
       elseCount: this.elseCount_,
     }
   },
   loadExtraState(state: any) {
-    this.elseIfCount_ = state.elseIfCount
+    this.elifCount_ = state.elifCount
     this.elseCount_ = state.elseCount
     this.rebuildShape_()
   },
   compose(containerBlock: Blockly.Block) {
     let clauseBlock: any = containerBlock.nextConnection?.targetBlock()
-    this.elseIfCount_ = 0
+    this.elifCount_ = 0
     this.elseCount_ = 0
     const valueConnections: (Blockly.Block | null)[] = [null]
     const statementConnections: (Blockly.Block | null)[] = [null]
@@ -32,8 +32,8 @@ const calciumIfMutatorMixin: any = {
 
     while (clauseBlock && !clauseBlock.isInsertionMarker()) {
       switch (clauseBlock.type) {
-        case CALCIUM_IF_ELSEIF_NAME:
-          this.elseIfCount_++
+        case CALCIUM_IF_ELIF_NAME:
+          this.elifCount_++
           valueConnections.push(clauseBlock.valueConnection_)
           statementConnections.push(clauseBlock.statementConnection_)
           break
@@ -60,13 +60,13 @@ const calciumIfMutatorMixin: any = {
     ) as Blockly.BlockSvg
     containerBlock.initSvg()
     let connection = containerBlock.nextConnection
-    for (let i = 1; i < this.elseIfCount_; ++i) {
-      const elseIfBlock = workspace.newBlock(
-        CALCIUM_IF_ELSEIF_NAME
+    for (let i = 1; i < this.elifCount_ + 1; ++i) {
+      const elifBlock = workspace.newBlock(
+        CALCIUM_IF_ELIF_NAME
       ) as Blockly.BlockSvg
-      elseIfBlock.initSvg()
-      connection.connect(elseIfBlock.previousConnection)
-      connection = elseIfBlock.nextConnection
+      elifBlock.initSvg()
+      connection.connect(elifBlock.previousConnection)
+      connection = elifBlock.nextConnection
     }
     if (this.elseCount_) {
       const elseBlock = workspace.newBlock(
@@ -107,7 +107,7 @@ const calciumIfMutatorMixin: any = {
     statementConnections: (Blockly.RenderedConnection | null)[],
     elseStatementConnection: Blockly.RenderedConnection | null
   ) {
-    for (let i = 1; i < this.elseIfCount_; ++i) {
+    for (let i = 1; i < this.elifCount_ + 1; ++i) {
       valueConnections[i]?.reconnect(this, 'IF' + i)
       statementConnections[i]?.reconnect(this, 'DO' + i)
     }
@@ -118,7 +118,7 @@ const calciumIfMutatorMixin: any = {
     let i = 1
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case CALCIUM_IF_ELSEIF_NAME:
+        case CALCIUM_IF_ELIF_NAME:
           const inputIf = this.getInput('IF' + i)
           const inputDo = this.getInput('DO' + i)
           clauseBlock.valueConnection_ =
@@ -156,9 +156,16 @@ const calciumIfMutatorMixin: any = {
       ++i
     }
     // Rebuild block
-    for (let i = 1; i < this.elseIfCount_ + 1; ++i) {
+    for (let i = 1; i < this.elifCount_ + 1; ++i) {
       this.appendValueInput('IF' + i)
-        .setCheck(['Boolean'])
+        .setCheck([
+          'Boolean',
+          'calcium_variable',
+          'calcium_attribute',
+          'calcium_subscript',
+          'calcium_call',
+          'calcium_arithmetic',
+        ])
         .appendField('elif')
       this.appendDummyInput('ELIF' + i).appendField(':')
       this.appendStatementInput('DO' + i).appendField('')
@@ -174,7 +181,7 @@ Blockly.Extensions.registerMutator(
   CALCIUM_IF_MUTATOR_NAME,
   calciumIfMutatorMixin,
   undefined,
-  [CALCIUM_IF_ELSEIF_NAME, CALCIUM_IF_ELSE_NAME]
+  [CALCIUM_IF_ELIF_NAME, CALCIUM_IF_ELSE_NAME]
 )
 
 const calciumIfChildBlocks: BlockDefinition[] = [
@@ -187,13 +194,13 @@ const calciumIfChildBlocks: BlockDefinition[] = [
     tooltip: tooltipManager.getValue('CALCIUM_IF_CONTAINER_TOOLTIP'),
   },
   {
-    type: CALCIUM_IF_ELSEIF_NAME,
+    type: CALCIUM_IF_ELIF_NAME,
     message0: 'elif',
     previousStatement: null,
     nextStatement: null,
     enableContextMenu: false,
     colour: 240,
-    tooltip: tooltipManager.getValue('CALCIUM_IF_ELSEIF_TOOLTIP'),
+    tooltip: tooltipManager.getValue('CALCIUM_IF_ELIF_TOOLTIP'),
   },
   {
     type: CALCIUM_IF_ELSE_NAME,
@@ -234,7 +241,7 @@ const calciumIfBlock: { [key: string]: BlockDefinition } = {
         mutator: CALCIUM_IF_MUTATOR_NAME,
         helpUrl: '',
       })
-      this.elseIfCount_ = 0
+      this.elifCount_ = 0
       this.elseCount_ = 0
     },
   },

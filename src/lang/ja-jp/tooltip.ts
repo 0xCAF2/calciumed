@@ -15,8 +15,9 @@ const CALCIUM_EXPR_STMT_TOOLTIP = '関数の呼び出し式を使います。'
 const CALCIUM_FOR_TOOLTIP = 'リストや辞書の要素を取り出します。'
 const CALCIUM_IF_TOOLTIP = '条件が真の場合に実行されるブロックです。'
 const CALCIUM_IF_CONTAINER_TOOLTIP = '条件が真の場合に実行されるブロックです。'
-const CALCIUM_IF_ELSEIF_TOOLTIP = '条件が偽の場合に実行されるブロックです。'
-const CALCIUM_IF_ELSE_TOOLTIP = '条件が偽の場合に実行されるブロックです。'
+const CALCIUM_IF_ELIF_TOOLTIP = '条件が偽の場合に実行されるブロックです。'
+const CALCIUM_IF_ELSE_TOOLTIP =
+  '条件が全て偽の場合、最後に実行されるブロックです。'
 const CALCIUM_IMPORT_TOOLTIP = 'Python のモジュールを使えるようにします。'
 const CALCIUM_KWARG_TOOLTIP = '関数に渡すキーワード引数です。'
 const CALCIUM_LIST_TOOLTIP = 'リストを作成します。'
@@ -48,7 +49,7 @@ const tooltips: ConstantValues = {
   CALCIUM_FOR_TOOLTIP,
   CALCIUM_IF_TOOLTIP,
   CALCIUM_IF_CONTAINER_TOOLTIP,
-  CALCIUM_IF_ELSEIF_TOOLTIP,
+  CALCIUM_IF_ELSEIF_TOOLTIP: CALCIUM_IF_ELIF_TOOLTIP,
   CALCIUM_IF_ELSE_TOOLTIP,
   CALCIUM_IMPORT_TOOLTIP,
   CALCIUM_KWARG_TOOLTIP,
