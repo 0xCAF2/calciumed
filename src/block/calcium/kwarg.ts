@@ -4,7 +4,8 @@ import { BlockDefinition } from 'blockly/core/blocks'
 import { tooltipManager } from '../../constant-manager'
 import { allTypesForCheck } from '../type-check/all-types'
 
-const CALCIUM_KWARG_NAME = 'calcium_kwarg'
+// used by calcium_call
+export const CALCIUM_KWARG_NAME = 'calcium_kwarg'
 
 const calciumKwarg: BlockDefinition = {
   type: CALCIUM_KWARG_NAME,

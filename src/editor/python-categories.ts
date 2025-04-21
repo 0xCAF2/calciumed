@@ -40,6 +40,22 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       },
       {
         kind: 'block',
+        type: 'calcium_logical',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_arithmetic',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_not',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_call',
+      },
+      {
+        kind: 'block',
         type: 'calcium_kwarg',
       },
       {
