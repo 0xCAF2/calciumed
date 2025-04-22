@@ -8,6 +8,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
     contents: [
       {
         kind: 'block',
+        type: 'calcium_variable',
+      },
+      {
+        kind: 'block',
         type: 'calcium_str',
       },
       {
@@ -24,15 +28,23 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       },
       {
         kind: 'block',
-        type: 'calcium_boolean',
-      },
-      {
-        kind: 'block',
         type: 'calcium_attribute',
       },
       {
         kind: 'block',
+        type: 'calcium_call',
+      },
+      {
+        kind: 'block',
         type: 'calcium_subscript',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_arithmetic',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_boolean',
       },
       {
         kind: 'block',
@@ -44,15 +56,7 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       },
       {
         kind: 'block',
-        type: 'calcium_arithmetic',
-      },
-      {
-        kind: 'block',
         type: 'calcium_not',
-      },
-      {
-        kind: 'block',
-        type: 'calcium_call',
       },
       {
         kind: 'block',
@@ -79,6 +83,10 @@ export const pythonCategories: Blockly.utils.toolbox.ToolboxItemInfo[] = [
       {
         kind: 'block',
         type: 'calcium_print',
+      },
+      {
+        kind: 'block',
+        type: 'calcium_assignment',
       },
       {
         kind: 'block',
