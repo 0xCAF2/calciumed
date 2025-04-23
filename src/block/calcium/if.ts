@@ -224,7 +224,14 @@ const calciumIfBlock: { [key: string]: BlockDefinition } = {
           {
             type: 'input_value',
             name: 'IF0',
-            check: 'Boolean',
+            check: [
+              'Boolean',
+              'calcium_variable',
+              'calcium_attribute',
+              'calcium_subscript',
+              'calcium_call',
+              'calcium_arithmetic',
+            ],
           },
         ],
         message1: '%1',

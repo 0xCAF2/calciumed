@@ -12,7 +12,12 @@ const calciumSubscript: BlockDefinition = {
     {
       type: 'input_value',
       name: 'REF',
-      check: ['calcium_variable', 'calcium_attribute', 'calcium_subscript'],
+      check: [
+        'calcium_variable',
+        'calcium_attribute',
+        'calcium_subscript',
+        'Array',
+      ],
     },
     {
       type: 'input_value',

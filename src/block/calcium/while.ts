@@ -12,7 +12,14 @@ const calciumWhile: BlockDefinition = {
     {
       type: 'input_value',
       name: 'CONDITION',
-      check: ['Boolean'],
+      check: [
+        'Boolean',
+        'calcium_variable',
+        'calcium_attribute',
+        'calcium_subscript',
+        'calcium_call',
+        'calcium_arithmetic',
+      ],
     },
     {
       type: 'input_dummy',

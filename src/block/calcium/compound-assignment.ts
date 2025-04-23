@@ -1,6 +1,7 @@
 import * as Blockly from 'blockly'
 // @ts-ignore
 import { BlockDefinition } from 'blockly/core/blocks'
+import { tooltipManager } from '../../constant-manager'
 
 export const CALCIUM_COMPOUND_ASSIGNMENT_NAME = 'calcium_compound_assignment'
 
@@ -17,7 +18,7 @@ const compoundAssignmentBlock: { [key: string]: BlockDefinition } = {
             check: [
               'calcium_variable',
               'calcium_attribute',
-              'calcium_subscription',
+              'calcium_subscript',
             ],
           },
           {
@@ -38,7 +39,7 @@ const compoundAssignmentBlock: { [key: string]: BlockDefinition } = {
         previousStatement: null,
         nextStatement: null,
         colour: 240,
-        tooltip: '',
+        tooltip: tooltipManager.getValue('CALCIUM_COMPOUND_ASSIGNMENT_TOOLTIP'),
         helpUrl: '',
       })
     },

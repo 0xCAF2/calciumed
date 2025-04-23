@@ -19,7 +19,7 @@ const calciumAssignmentBlock: { [key: string]: BlockDefinition } = {
             check: [
               'calcium_variable',
               'calcium_attribute',
-              'calcium_subscription',
+              'calcium_subscript',
               'calcium_comma',
             ],
           },
