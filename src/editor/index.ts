@@ -16,15 +16,17 @@ export type InjectOptions = {
 export const buildEditor = async ({
   parent,
   options,
+  height,
 }: {
   parent: HTMLElement
   options: InjectOptions
-}): Promise<HTMLDivElement> => {
+  height?: string
+}): Promise<Blockly.Workspace> => {
   const toolbox = await fetchToolbox(options.toolboxUrl)
 
   const table = document.createElement('table')
   table.style.width = '100%'
-  table.style.height = '100%'
+  table.style.height = height ?? '100%'
 
   const tbody = document.createElement('tbody')
 
@@ -71,7 +73,7 @@ export const buildEditor = async ({
   }
   window.addEventListener('resize', onresize, false)
   onresize()
-  return table
+  return workspace
 }
 
 async function fetchToolbox(
