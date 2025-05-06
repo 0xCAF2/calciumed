@@ -1,0 +1,30 @@
+import { expect, test } from "vitest"
+import { parseNumber } from "./parse-number"
+
+test("parseNumber", () => {
+  expect(parseNumber("123")).toBe("123")
+  expect(parseNumber("0x123")).toBe("0x123")
+  expect(parseNumber("0b101")).toBe("0b101")
+  expect(parseNumber("0123")).toBe("0123")
+  expect(parseNumber("1.23")).toBe("1.23")
+  expect(parseNumber("1e10")).toBe("1e10")
+  expect(parseNumber("１")).toBe("1")
+  expect(parseNumber("２")).toBe("2")
+  expect(parseNumber("３")).toBe("3")
+  expect(parseNumber("４")).toBe("4")
+  expect(parseNumber("５")).toBe("5")
+  expect(parseNumber("６")).toBe("6")
+  expect(parseNumber("７")).toBe("7")
+  expect(parseNumber("８")).toBe("8")
+  expect(parseNumber("９")).toBe("9")
+  expect(parseNumber("０")).toBe("0")
+
+  expect(parseNumber("0x１２３")).toBe("0x123")
+  expect(parseNumber("0b１")).toBe("0b1")
+  expect(parseNumber("０１２３")).toBe("0123")
+  expect(parseNumber("１.２３")).toBe("1.23")
+  expect(parseNumber("１e１０")).toBe("1e10")
+  expect(parseNumber("789j")).toBe("789j")
+  expect(parseNumber("789J")).toBe("789J")
+  expect(() => parseNumber("0x789j")).toThrowError("complex number")
+})
