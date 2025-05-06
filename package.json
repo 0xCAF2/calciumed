@@ -6,11 +6,13 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "vitest"
     },
     "devDependencies": {
         "typescript": "~5.8.2",
-        "vite": "^6.0.1"
+        "vite": "^6.0.1",
+        "vitest": "^3.1.2"
     },
     "dependencies": {
         "@blockly/theme-dark": "^7.0.7",
