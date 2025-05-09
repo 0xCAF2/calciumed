@@ -1,10 +1,14 @@
-import * as Blockly from "blockly"
+import * as Blockly from 'blockly'
 
 class CalciumGenerator extends Blockly.Generator {
   indent = 1
 
   constructor() {
-    super("calcium")
+    super('calcium')
+  }
+
+  shiftIndent(delta: number) {
+    this.indent += delta
   }
 }
 
