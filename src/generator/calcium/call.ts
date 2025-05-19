@@ -1,4 +1,4 @@
-import { calciumGenerator, removeParens } from '.'
+import { calciumGenerator, trimParens } from '.'
 
 const self = calciumGenerator
 
@@ -7,7 +7,7 @@ calciumGenerator.forBlock['calcium_call'] = (block) => {
   const countOfArguments: number = Reflect.get(block, 'countOfArguments')
   for (let i = 0; i < countOfArguments; ++i) {
     let arg = self.valueToCode(block, 'ARG' + i, 0) || 'null'
-    arg = removeParens(arg)
+    arg = trimParens(arg)
     args.push(JSON.parse(arg))
   }
   const calleeStr = self.valueToCode(block, 'REF', 0) || `["var", "print"]`

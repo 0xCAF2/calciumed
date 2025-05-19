@@ -1,4 +1,4 @@
-import { calciumGenerator, removeParens } from '.'
+import { calciumGenerator, trimParens } from '.'
 
 const self = calciumGenerator
 
@@ -18,7 +18,7 @@ calciumGenerator.forBlock['calcium_for'] = (block) => {
       [],
       'for',
       JSON.parse(vars),
-      JSON.parse(removeParens(iterable)),
+      JSON.parse(trimParens(iterable)),
     ]) +
     ',' +
     stmts
