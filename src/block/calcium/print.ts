@@ -64,7 +64,7 @@ const calciumPrintMutatorMixin: any = {
       if (!this.getInput('ARG' + i)) {
         const input = this.appendValueInput('ARG' + i)
         input.init()
-        input.setCheck(allTypesForCheck)
+        input.setCheck([...allTypesForCheck, 'calcium_kwarg'])
         if (i !== 0) {
           input.appendField(',')
         }
