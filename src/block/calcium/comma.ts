@@ -3,8 +3,6 @@ import * as Blockly from 'blockly'
 import { BlockDefinition } from 'blockly/core/blocks'
 import { tooltipManager } from '../../constant-manager'
 
-import { allTypesForCheck } from '../type-check/all-types'
-
 const CALCIUM_COMMA_NAME = 'calcium_comma'
 
 const calciumComma: BlockDefinition = {
@@ -14,12 +12,12 @@ const calciumComma: BlockDefinition = {
     {
       type: 'input_value',
       name: 'FIRST',
-      check: allTypesForCheck,
+      check: ['calcium_variable'],
     },
     {
       type: 'input_value',
       name: 'SECOND',
-      check: allTypesForCheck,
+      check: ['calcium_variable'],
     },
   ],
   output: 'calcium_comma',
