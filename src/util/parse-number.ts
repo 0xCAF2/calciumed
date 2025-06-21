@@ -3,10 +3,29 @@ export function parseNumber(str: string): string {
   for (let i = 0; i < str.length; ++i) {
     resultStr += parseFullWidthNumber(str[i])
   }
+  // Reject if contains invalid characters
+  if (
+    !/^[-+]?((0[xX][0-9a-fA-F_]+)|(0[bB][01_]+)|(0[0-7_]+)|([0-9_]+(\.[0-9_]*)?([eE][-+]?[0-9_]+)?([jJ])?)|(\.[0-9_]+([eE][-+]?[0-9_]+)?([jJ])?))$/.test(
+      resultStr
+    )
+  ) {
+    throw new Error("invalid character in number")
+  }
   return parseBasedOnPrefix(resultStr)
 }
 
 function parseBasedOnPrefix(str: string): string {
+  // Reject complex numbers with non-decimal prefixes
+  if (
+    (str.startsWith("0x") ||
+      str.startsWith("0X") ||
+      str.startsWith("0b") ||
+      str.startsWith("0B") ||
+      (str.startsWith("0") && !str.includes("."))) &&
+    (str.endsWith("j") || str.endsWith("J"))
+  ) {
+    throw new Error("complex number with non-decimal base is not allowed")
+  }
   if (str.endsWith("j") || str.endsWith("J")) {
     return parseComplexNumber(str)
   } else if (str.startsWith("0x") || str.startsWith("0X")) {
@@ -27,7 +46,7 @@ function parseWithRadix(str: string, radix: number, type: string): string {
   if (isNaN(num)) {
     throw new Error(`cannot parse as ${type}`)
   }
-  return type === "decimal" ? num.toString() : str
+  return str
 }
 
 function parseFloatOrThrow(str: string, type: string): string {
@@ -44,7 +63,7 @@ function parseComplexNumber(str: string): string {
   if (isNaN(num)) {
     throw new Error("cannot parse as complex number")
   }
-  return `${num}${str.slice(-1)}` // Append the "j" or "J" back
+  return str
 }
 
 function parseFullWidthNumber(char: string): string {
