@@ -18,8 +18,8 @@ if (codeArea instanceof HTMLElement) {
       "calc(100% - 160px)"
     )
     document.body.appendChild(codeArea)
-    const generator = await import("./generator")
 
+    const generator = await import("./generator")
     workspace.addChangeListener(() => {
       codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
     })
