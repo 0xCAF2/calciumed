@@ -10,6 +10,15 @@ class CalciumGenerator extends Blockly.Generator {
   shiftIndent(delta: number) {
     this.indent += delta
   }
+
+  scrub_(_block: Blockly.Block, code: string, _opt_thisOnly?: boolean): string {
+    const nextBlock = _block.nextConnection && _block.nextConnection.targetBlock()
+    const nextCode = _opt_thisOnly ? '' : this.blockToCode(nextBlock)
+    if (nextBlock) {
+      return code + '\n' + nextCode
+    }
+    return code
+  }
 }
 
 export const calciumGenerator = new CalciumGenerator()
