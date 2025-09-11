@@ -10,20 +10,18 @@ codeArea.style.marginTop = "24px"
 codeArea.style.fontFamily = "Courier New"
 // TODO: remove here ====
 
-if (codeArea instanceof HTMLElement) {
-  if (userLanguage === "ja-JP" || userLanguage === "ja") {
-    const ja = await import("./lang/ja-jp")
-    const workspace = await ja.buildCalciumEditor(
-      document.body,
-      "calc(100% - 160px)"
-    )
-    document.body.appendChild(codeArea)
+if (userLanguage === "ja-JP" || userLanguage === "ja") {
+  const ja = await import("./lang/ja-jp")
+  const workspace = await ja.buildCalciumEditor(
+    document.body,
+    "calc(100% - 160px)"
+  )
+  document.body.appendChild(codeArea)
 
-    const generator = await import("./generator")
-    workspace.addChangeListener(() => {
-      codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
-    })
-  } else {
-    await import("./lang/en-us")
-  }
+  const generator = await import("./generator")
+  workspace.addChangeListener(() => {
+    codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
+  })
+} else {
+  await import("./lang/en-us")
 }
