@@ -19,6 +19,13 @@ class CalciumGenerator extends Blockly.Generator {
     }
     return code
   }
+
+  finish(code: string): string {
+    const start = JSON.stringify([1, [], '#', '0.1.0'])
+    const importRandom = JSON.stringify([1, [], 'import', 'random'])
+    const end = JSON.stringify([1, [], 'end'])
+    return `[${start},${importRandom},${code}${end}]`
+  }
 }
 
 export const calciumGenerator = new CalciumGenerator()
