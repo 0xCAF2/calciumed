@@ -15,7 +15,7 @@ class CalciumGenerator extends Blockly.Generator {
     const nextBlock = _block.nextConnection && _block.nextConnection.targetBlock()
     const nextCode = _opt_thisOnly ? '' : this.blockToCode(nextBlock)
     if (nextBlock) {
-      return code + '\n' + nextCode
+      return code + nextCode
     }
     return code
   }
@@ -40,8 +40,13 @@ export const trimParens = (codeStr: string) => {
 
 export function trimLastComma(code: string): string {
   // remove the last comma in the code.
-  if (code.endsWith(',')) {
-    return code.substring(0, code.length - 1)
+  let result = code.trimEnd()
+  while (true) {
+    if (result.endsWith(',')) {
+      result = result.substring(0, result.length - 1)
+    } else {
+      break
+    }
   }
-  return code
+  return result
 }
