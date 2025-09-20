@@ -12,4 +12,4 @@ const messages: ConstantValues = {
   CALCIUM_PRINT_ARG_MESSAGE,
 }
 
-messageManager.setValues(messages)
+messageManager.addValues(messages)

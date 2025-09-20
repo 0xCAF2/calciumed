@@ -1,7 +1,7 @@
 class ConstantManager {
   private values!: ConstantValues
-  setValues(values: ConstantValues) {
-    this.values = values
+  addValues(values: ConstantValues) {
+    this.values = { ...this.values, ...values }
   }
   getValue(key: string): string {
     return this.values[key] ?? ''

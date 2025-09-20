@@ -1,6 +1,8 @@
 [
     {
         "基本": [
+            "pseudo_variable",
+            "pseudo_number",
             "calcium_arithmetic",
             "calcium_subscript",
             "calcium_assignment",

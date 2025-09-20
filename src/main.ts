@@ -44,6 +44,8 @@ outputArea.style.marginLeft = "8px"
 outputArea.readOnly = true
 
 if (userLanguage === "ja-JP" || userLanguage === "ja") {
+  await import("./lang/ps-jp")
+  await import("./block/pseudo")
   const ja = await import("./lang/ja-jp")
   const workspace = await ja.buildCalciumEditor(
     document.body,
@@ -59,6 +61,7 @@ if (userLanguage === "ja-JP" || userLanguage === "ja") {
   div.appendChild(outputArea)
 
   const generator = await import("./generator")
+  await import("./generator/pseudo")
   workspace.addChangeListener(() => {
     codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
   })

@@ -76,4 +76,4 @@ const tooltips: ConstantValues = {
   CALCIUM_WHILE_TOOLTIP,
 }
 
-tooltipManager.setValues(tooltips)
+tooltipManager.addValues(tooltips)
