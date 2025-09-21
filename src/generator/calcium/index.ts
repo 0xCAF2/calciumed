@@ -14,6 +14,9 @@ class CalciumGenerator extends Blockly.Generator {
   scrub_(_block: Blockly.Block, code: string, _opt_thisOnly?: boolean): string {
     const nextBlock = _block.nextConnection && _block.nextConnection.targetBlock()
     const nextCode = _opt_thisOnly ? '' : this.blockToCode(nextBlock)
+    if (!code.endsWith(',')) {
+      code = code + ','
+    }
     if (nextBlock) {
       return code + nextCode
     }
