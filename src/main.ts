@@ -2,31 +2,35 @@
 const userLanguage =
   navigator.language || (navigator.languages && navigator.languages[0])
 
-const worker = new Worker('worker.js')
-worker.onmessage = (event) => {
-  const message = event.data
-  if (message.loaded) {
-    runButton.disabled = false
-  } else if (message.output || message.output === '') {
-    outputArea.value += message.output
-    outputArea.value += '\n'
-  } else if (message.error) {
-    outputArea.value += message.error.toString()
-    outputArea.value = `${message.line} 行目でエラーが発生しました： ${message.error.toString()}`
-  } else if (message.input || message.input === '') {
-    const input = window.prompt(message.input)
-    worker.postMessage({ input: input ?? '' })
-  }
-}
+const IS_DEBUG = true
 
-var runButton = document.createElement("button")
-runButton.textContent = "Run"
-runButton.style.height = "40px"
-runButton.style.padding = "8px 16px"
-runButton.disabled = true
-document.body.appendChild(runButton)
-runButton.onclick = async () => {
-  worker.postMessage({ code: codeArea.value })
+if (!IS_DEBUG) {
+  const worker = new Worker('worker.js')
+  worker.onmessage = (event) => {
+    const message = event.data
+    if (message.loaded) {
+      runButton.disabled = false
+    } else if (message.output || message.output === '') {
+      outputArea.value += message.output
+      outputArea.value += '\n'
+    } else if (message.error) {
+      outputArea.value += message.error.toString()
+      outputArea.value = `${message.line} 行目でエラーが発生しました： ${message.error.toString()}`
+    } else if (message.input || message.input === '') {
+      const input = window.prompt(message.input)
+      worker.postMessage({ input: input ?? '' })
+    }
+  }
+
+  var runButton = document.createElement("button")
+  runButton.textContent = "Run"
+  runButton.style.height = "40px"
+  runButton.style.padding = "8px 16px"
+  runButton.disabled = true
+  document.body.appendChild(runButton)
+  runButton.onclick = async () => {
+    worker.postMessage({ code: codeArea.value })
+  }
 }
 
 var codeArea = document.createElement("textarea")
