@@ -1,5 +1,5 @@
 import { calciumGenerator } from '.'
 
 calciumGenerator.forBlock['calcium_dict'] = () => {
-  return ['["dict"]', 0]
+  return ['["dict", []]', 0]
 }
