@@ -2,7 +2,7 @@
 const userLanguage =
   navigator.language || (navigator.languages && navigator.languages[0])
 
-const IS_DEBUG = true
+const IS_DEBUG = false
 
 if (!IS_DEBUG) {
   const worker = new Worker('worker.js')
