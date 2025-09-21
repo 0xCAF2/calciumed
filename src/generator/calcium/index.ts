@@ -14,7 +14,7 @@ class CalciumGenerator extends Blockly.Generator {
   scrub_(_block: Blockly.Block, code: string, _opt_thisOnly?: boolean): string {
     const nextBlock = _block.nextConnection && _block.nextConnection.targetBlock()
     const nextCode = _opt_thisOnly ? '' : this.blockToCode(nextBlock)
-    if (!code.endsWith(',')) {
+    if (!code.endsWith(',') && _block.getParent() === null) {
       code = code + ','
     }
     if (nextBlock) {
@@ -24,7 +24,7 @@ class CalciumGenerator extends Blockly.Generator {
   }
 
   finish(code: string): string {
-    const start = JSON.stringify([1, [], '#', '0.1.0'])
+    const start = JSON.stringify([1, [], '#', '0.3.0'])
     const importRandom = JSON.stringify([1, [], 'import', 'random'])
     const end = JSON.stringify([1, [], 'end'])
     return `[${start},${importRandom},${code}${end}]`
@@ -33,7 +33,7 @@ class CalciumGenerator extends Blockly.Generator {
 
 export const calciumGenerator = new CalciumGenerator()
 
-export const trimParens = (codeStr: string) => {
+export const trimParens = (codeStr: string): string => {
   let strWithoutParens = codeStr
   if (codeStr && codeStr[0] === '(') {
     strWithoutParens = codeStr.substring(1, codeStr.length - 1)

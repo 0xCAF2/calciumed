@@ -6,7 +6,7 @@ calciumGenerator.forBlock['calcium_subscript'] = (block) => {
   let ref = self.valueToCode(block, 'REF', 0) || `["var", "s"]`
   ref = JSON.parse(trimParens(ref))
 
-  let subCode = self.valueToCode(block, 'SUB', 0) || '0'
+  let subCode = self.valueToCode(block, 'SUB', 0) || '["num", 0]'
   let sub = JSON.parse(trimParens(subCode))
   if (sub instanceof Array && sub[0] === 'slice') {
     const start = sub[1]

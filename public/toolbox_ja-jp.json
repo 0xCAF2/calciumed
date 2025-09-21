@@ -3,6 +3,8 @@
         "基本": [
             "pseudo_variable",
             "pseudo_number",
+            "pseudo_str",
+            "pseudo_array",
             "calcium_arithmetic",
             "calcium_subscript",
             "calcium_assignment",
