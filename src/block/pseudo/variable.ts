@@ -17,7 +17,7 @@ const pseudoVariable: BlockDefinition = {
   ],
   inputsInline: true,
   output: 'calcium_variable',
-  colour: 120,
+  colour: 210,
   tooltip: tooltipManager.getValue('PSEUDO_VARIABLE_TOOLTIP'),
   helpUrl: '',
 }

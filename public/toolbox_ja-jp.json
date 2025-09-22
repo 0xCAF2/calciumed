@@ -5,6 +5,7 @@
             "pseudo_number",
             "pseudo_str",
             "pseudo_array",
+            "pseudo_array_slice",
             "calcium_arithmetic",
             "calcium_subscript",
             "calcium_assignment",

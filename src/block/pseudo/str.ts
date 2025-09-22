@@ -17,7 +17,7 @@ const pseudoStr: BlockDefinition = {
   ],
   inputsInline: true,
   output: 'String',
-  colour: 120,
+  colour: 210,
   tooltip: tooltipManager.getValue('PSEUDO_STR_TOOLTIP'),
   helpUrl: '',
 }

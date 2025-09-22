@@ -25,7 +25,7 @@ Blockly.common.defineBlocks({
       )
       this.setInputsInline(true)
       this.setOutput(true, 'Number')
-      this.setColour(120)
+      this.setColour(210)
       this.setTooltip(tooltipManager.getValue('PSEUDO_NUMBER_TOOLTIP'))
     },
   },
