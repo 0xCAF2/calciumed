@@ -4,13 +4,19 @@
             "pseudo_variable",
             "pseudo_number",
             "pseudo_str",
-            "pseudo_array",
-            "pseudo_array_slice",
             "pseudo_assignment",
             "calcium_arithmetic",
             "calcium_subscript",
             "calcium_assignment",
             "calcium_compound_assignment"
+        ]
+    },
+    {
+        "配列": [
+            "pseudo_array",
+            "pseudo_array_slice",
+            "pseudo_assign_array",
+            "pseudo_assign_zero"
         ]
     },
     {
@@ -23,6 +29,10 @@
     {
         "繰り返し": [
             "calcium_while"
+        ]
+    },
+    {
+        "関数": [
         ]
     }
 ]

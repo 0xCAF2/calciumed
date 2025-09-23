@@ -1,5 +1,7 @@
 import "./array"
 import "./array-slice"
+import "./assign-array"
+import "./assign-zero"
 import "./assignment"
 import "./number"
 import "./str"
