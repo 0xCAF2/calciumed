@@ -27,7 +27,7 @@ onmessage = async (event) => {
       const dict = pyodide.globals.get("dict")
       const globals = dict(Object.entries({ code: event.data.code }))
       result = await pyodide.runPythonAsync(
-        `from calciumpy.runtime import Runtime; runtime = Runtime(code); result = runtime.run(); print(end='', flush=True); result.value`,
+        `from calciumpy.runtime import Runtime; runtime = Runtime(code, decodes_str=True); result = runtime.run(); print(end='', flush=True); result.value`,
         { globals }
       )
     } else if (event.data.input) {
@@ -49,6 +49,7 @@ result.value`
       }
     }
   } catch (e) {
+    console.error(e)
     // locate the error in the original code
     // Neither "#" nor "import" commands count as lines
     // since they are not part of the user code

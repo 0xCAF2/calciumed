@@ -11,7 +11,7 @@ Blockly.common.defineBlocks({
   [PSEUDO_NUMBER_NAME]: {
     init() {
       const dummyInput = this.appendDummyInput()
-      dummyInput.appendField('数値')
+      dummyInput.appendField('数値 ')
       dummyInput.appendField(
         new Blockly.FieldTextInput('10', function (newValue) {
           try {

@@ -1,25 +1,28 @@
-import * as Blockly from 'blockly'
+import * as Blockly from "blockly"
 // @ts-ignore
-import { BlockDefinition } from 'blockly/core/blocks'
-import { tooltipManager } from '../../constant-manager'
+import { BlockDefinition } from "blockly/core/blocks"
+import { tooltipManager } from "../../constant-manager"
+import { sanitizeStr } from "../../util/sanitize-str"
 
-const PSEUDO_STR_NAME = 'pseudo_str'
+const PSEUDO_STR_NAME = "pseudo_str"
 
-const pseudoStr: BlockDefinition = {
-  type: PSEUDO_STR_NAME,
-  message0: '"%1"',
-  args0: [
-    {
-      type: 'field_input',
-      name: 'STR',
-      text: '文字列',
+const pseudoStr: { [key: string]: BlockDefinition } = {
+  [PSEUDO_STR_NAME]: {
+    init() {
+      this.appendDummyInput()
+        .appendField("文字列 ")
+        .appendField(
+          new Blockly.FieldTextInput('""', function (newValue) {
+            return `"${sanitizeStr(newValue)}"`
+          }),
+          "STR"
+        )
+      this.setInputsInline(true)
+      this.setOutput(true, "String")
+      this.setColour(210)
+      this.setTooltip(tooltipManager.getValue("PSEUDO_STR_TOOLTIP"))
     },
-  ],
-  inputsInline: true,
-  output: 'String',
-  colour: 210,
-  tooltip: tooltipManager.getValue('PSEUDO_STR_TOOLTIP'),
-  helpUrl: '',
+  },
 }
 
-Blockly.defineBlocksWithJsonArray([pseudoStr])
+Blockly.common.defineBlocks(pseudoStr)
