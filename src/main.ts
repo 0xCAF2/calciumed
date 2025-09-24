@@ -72,5 +72,22 @@ if (userLanguage === "ja-JP" || userLanguage === "ja") {
     codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
   })
 } else {
-  await import("./lang/en-us")
+  const en = await import("./lang/en-us")
+  const workspace = await en.buildCalciumEditor(
+    document.body,
+    "calc(100% - 200px)"
+  )
+  const div = document.createElement("div")
+  div.style.display = "flex"
+  div.style.flexDirection = "row"
+  div.style.alignItems = "flex-start"
+  div.style.marginTop = "8px"
+  document.body.appendChild(div)
+  div.appendChild(codeArea)
+  div.appendChild(outputArea)
+
+  const generator = await import("./generator")
+  workspace.addChangeListener(() => {
+    codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
+  })
 }

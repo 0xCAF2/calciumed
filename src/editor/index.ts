@@ -1,13 +1,14 @@
-import * as Blockly from 'blockly'
+import * as Blockly from "blockly"
 // @ts-ignore
-import DarkTheme from '@blockly/theme-dark'
-import { createToolbox } from './create-toolbox'
+import DarkTheme from "@blockly/theme-dark"
+import { createToolbox } from "./create-toolbox"
+import { pythonCategories } from "./python-categories"
 
 export type InjectOptions = {
   renderer?: string
   sounds?: boolean
   theme?: any
-  toolboxUrl: string
+  toolboxUrl?: string
   zoom?: {
     startScale: number
   }
@@ -22,22 +23,30 @@ export const buildEditor = async ({
   options: InjectOptions
   height?: string
 }): Promise<Blockly.Workspace> => {
-  const toolbox = await fetchToolbox(options.toolboxUrl)
+  let toolbox: Blockly.utils.toolbox.ToolboxDefinition
+  if (options.toolboxUrl) {
+    toolbox = await fetchToolbox(options.toolboxUrl)
+  } else {
+    toolbox = {
+      kind: "categoryToolbox",
+      contents: pythonCategories,
+    }
+  }
 
-  const table = document.createElement('table')
-  table.style.width = '100%'
-  table.style.height = height ?? '100%'
+  const table = document.createElement("table")
+  table.style.width = "100%"
+  table.style.height = height ?? "100%"
 
-  const tbody = document.createElement('tbody')
+  const tbody = document.createElement("tbody")
 
-  const tr = document.createElement('tr')
-  tr.style.height = '100%'
+  const tr = document.createElement("tr")
+  tr.style.height = "100%"
 
-  const blocklyArea = document.createElement('td')
-  blocklyArea.style.height = '100%'
+  const blocklyArea = document.createElement("td")
+  blocklyArea.style.height = "100%"
 
-  const blocklyDiv = document.createElement('div')
-  blocklyDiv.style.position = 'absolute'
+  const blocklyDiv = document.createElement("div")
+  blocklyDiv.style.position = "absolute"
 
   blocklyArea.appendChild(blocklyDiv)
   tr.appendChild(blocklyArea)
@@ -46,7 +55,7 @@ export const buildEditor = async ({
   parent.appendChild(table)
 
   const workspace = Blockly.inject(blocklyDiv, {
-    renderer: options.renderer ?? 'zelos',
+    renderer: options.renderer ?? "zelos",
     sounds: options.sounds ?? false,
     theme: options.theme ?? DarkTheme,
     toolbox,
@@ -65,13 +74,13 @@ export const buildEditor = async ({
       if (!parent) break
       element = parent as HTMLElement
     } while (true)
-    blocklyDiv.style.left = x + 'px'
-    blocklyDiv.style.top = y + 'px'
-    blocklyDiv.style.width = blocklyArea.offsetWidth + 'px'
-    blocklyDiv.style.height = blocklyArea.offsetHeight + 'px'
+    blocklyDiv.style.left = x + "px"
+    blocklyDiv.style.top = y + "px"
+    blocklyDiv.style.width = blocklyArea.offsetWidth + "px"
+    blocklyDiv.style.height = blocklyArea.offsetHeight + "px"
     Blockly.svgResize(workspace)
   }
-  window.addEventListener('resize', onresize, false)
+  window.addEventListener("resize", onresize, false)
   onresize()
   return workspace
 }

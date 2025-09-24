@@ -1,5 +1,4 @@
-import * as Blockly from 'blockly'
-import { pythonCategories } from './python-categories'
+import * as Blockly from "blockly"
 
 export function createToolbox(
   categories: CategoryDefinition[]
@@ -8,17 +7,17 @@ export function createToolbox(
   for (const category of categories) {
     const categoryName = Object.keys(category)[0]
     blocks.push({
-      kind: 'category',
+      kind: "category",
       name: categoryName,
       contents: category[categoryName].map((blockName: BlockType) => ({
-        kind: 'block',
+        kind: "block",
         type: blockName,
       })),
     })
   }
   return {
-    kind: 'categoryToolbox',
-    contents: blocks.concat(pythonCategories),
+    kind: "categoryToolbox",
+    contents: blocks,
   }
 }
 
