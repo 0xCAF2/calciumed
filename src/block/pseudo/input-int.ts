@@ -3,11 +3,11 @@ import * as Blockly from "blockly"
 import { BlockDefinition } from "blockly/core/blocks"
 import { tooltipManager } from "../../constant-manager"
 
-const PSEUDO_ASSIGN_ZERO_NAME = "pseudo_assign_zero"
+const PSEUDO_INPUT_INT_NAME = "pseudo_input_int"
 
-const pseudoAssignZero: BlockDefinition = {
-  type: PSEUDO_ASSIGN_ZERO_NAME,
-  message0: "%1 のすべての値を0にする",
+const pseudoInputInt: BlockDefinition = {
+  type: PSEUDO_INPUT_INT_NAME,
+  message0: "%1 =【外部からの入力（数）】",
   args0: [
     {
       type: "input_value",
@@ -19,8 +19,8 @@ const pseudoAssignZero: BlockDefinition = {
   previousStatement: null,
   nextStatement: null,
   colour: 330,
-  tooltip: tooltipManager.getValue("PSEUDO_ASSIGN_ZERO_TOOLTIP"),
+  tooltip: tooltipManager.getValue("PSEUDO_INPUT_INT_TOOLTIP"),
   helpUrl: "",
 }
 
-Blockly.defineBlocksWithJsonArray([pseudoAssignZero])
+Blockly.defineBlocksWithJsonArray([pseudoInputInt])

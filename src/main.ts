@@ -5,20 +5,22 @@ const userLanguage =
 const IS_DEBUG = false
 
 if (!IS_DEBUG) {
-  const worker = new Worker('worker.js')
+  const worker = new Worker("worker.js")
   worker.onmessage = (event) => {
     const message = event.data
     if (message.loaded) {
       runButton.disabled = false
-    } else if (message.output || message.output === '') {
+    } else if (message.output || message.output === "") {
       outputArea.value += message.output
-      outputArea.value += '\n'
+      outputArea.value += "\n"
     } else if (message.error) {
       outputArea.value += message.error.toString()
-      outputArea.value = `${message.line} 行目でエラーが発生しました： ${message.error.toString()}`
-    } else if (message.input || message.input === '') {
+      outputArea.value = `${
+        message.line
+      } 行目でエラーが発生しました： ${message.error.toString()}`
+    } else if (message.input || message.input === "") {
       const input = window.prompt(message.input)
-      worker.postMessage({ input: input ?? '' })
+      worker.postMessage({ input: input ?? "" })
     }
   }
 

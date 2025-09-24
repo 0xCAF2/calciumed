@@ -34,5 +34,11 @@
     {
         "関数": [
         ]
+    },
+    {
+        "入力": [
+            "pseudo_input_int",
+            "pseudo_input_str"
+        ]
     }
 ]
