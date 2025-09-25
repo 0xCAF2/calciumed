@@ -1,6 +1,9 @@
 import { ConstantValues, tooltipManager } from "../../constant-manager"
 
+const CALCIUM_ARITHMETIC_TOOLTIP =
+  "Perform arithmetic operations or string concatenation on numbers and strings."
 const CALCIUM_ASSIGNMENT_TOOLTIP = "Assign a value to a variable."
+const CALCIUM_ATTRIBUTE_TOOLTIP = "Access an attribute of an object."
 const CALCIUM_BOOLEAN_TOOLTIP = "Represents a boolean value."
 const CALCIUM_BREAK_CONTINUE_TOOLTIP =
   "Exit the loop or skip to the next iteration."
@@ -37,13 +40,16 @@ const CALCIUM_PRINT_ARG_TOOLTIP = "Add a value to print."
 const CALCIUM_PRINT_TOOLTIP = "Display the specified values."
 const CALCIUM_RELATIONAL_TOOLTIP = "Compare values."
 const CALCIUM_RETURN_TOOLTIP = "Exit a function."
+const CALCIUM_SLICE_TOOLTIP = "Extract a portion of a list or string."
 const CALCIUM_STR_TOOLTIP = "Represents a string."
 const CALCIUM_SUBSCRIPT_TOOLTIP = "Access an element of a list or dictionary."
 const CALCIUM_VARIABLE_TOOLTIP = "Represents a variable name."
 const CALCIUM_WHILE_TOOLTIP = "Repeat while the condition is true."
 
 const tooltips: ConstantValues = {
+  CALCIUM_ARITHMETIC_TOOLTIP,
   CALCIUM_ASSIGNMENT_TOOLTIP,
+  CALCIUM_ATTRIBUTE_TOOLTIP,
   CALCIUM_BOOLEAN_TOOLTIP,
   CALCIUM_BREAK_CONTINUE_TOOLTIP,
   CALCIUM_CALL_ARG_CONTAINER_TOOLTIP,
@@ -74,6 +80,7 @@ const tooltips: ConstantValues = {
   CALCIUM_PRINT_TOOLTIP,
   CALCIUM_RELATIONAL_TOOLTIP,
   CALCIUM_RETURN_TOOLTIP,
+  CALCIUM_SLICE_TOOLTIP,
   CALCIUM_STR_TOOLTIP,
   CALCIUM_SUBSCRIPT_TOOLTIP,
   CALCIUM_VARIABLE_TOOLTIP,
