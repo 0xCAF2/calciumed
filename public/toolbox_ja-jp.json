@@ -4,11 +4,13 @@
             "pseudo_variable",
             "pseudo_number",
             "pseudo_str",
-            "pseudo_assignment",
-            "calcium_arithmetic",
-            "calcium_subscript",
-            "calcium_assignment",
-            "calcium_compound_assignment"
+            "pseudo_assignment"
+        ]
+    },
+    {
+        "演算": [
+            "pseudo_arithmetic",
+            "pseudo_relational"
         ]
     },
     {
