@@ -25,7 +25,7 @@ const CALCIUM_IF_TOOLTIP = "Block executed when the condition is true."
 const CALCIUM_IF_CONTAINER_TOOLTIP =
   "Block executed when the condition is true."
 const CALCIUM_IF_ELIF_TOOLTIP =
-  "Block executed when the previous condition is false."
+  "Block executed when the previous condition is false and the current condition is true."
 const CALCIUM_IF_ELSE_TOOLTIP =
   "Block executed last when all conditions are false."
 const CALCIUM_IMPORT_TOOLTIP = "Make a Python module available for use."
