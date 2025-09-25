@@ -1,4 +1,5 @@
 import * as Blockly from "blockly"
+import { pythonCategories } from "./python-categories"
 
 export function createToolbox(
   categories: CategoryDefinition[]
@@ -17,7 +18,7 @@ export function createToolbox(
   }
   return {
     kind: "categoryToolbox",
-    contents: blocks,
+    contents: blocks.concat(pythonCategories),
   }
 }
 
