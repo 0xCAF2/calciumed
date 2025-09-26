@@ -24,7 +24,8 @@
     {
         "条件分岐": [
             "pseudo_logical",
-            "pseudo_not"
+            "pseudo_not",
+            "pseudo_if"
         ]
     },
     {
