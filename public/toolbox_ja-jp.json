@@ -23,14 +23,12 @@
     },
     {
         "条件分岐": [
-            "calcium_logical",
-            "calcium_not",
-            "calcium_if"
+            "pseudo_logical",
+            "pseudo_not"
         ]
     },
     {
         "繰り返し": [
-            "calcium_while"
         ]
     },
     {
