@@ -7,6 +7,7 @@ const PSEUDO_ARRAY_SLICE_TOOLTIP = "配列の範囲を決めて、要素を指�
 const PSEUDO_ASSIGN_ARRAY_TOOLTIP = "新しい配列を代入します。"
 const PSEUDO_ASSIGN_ZERO_TOOLTIP = "配列の要素をすべて0に書き換えます。"
 const PSEUDO_ASSIGNMENT_TOOLTIP = "変数や配列の中身を変更します。"
+const PSEUDO_FOR_INCREMENT_TOOLTIP = "変数の値を増やしながら、繰り返します。"
 const PSEUDO_IF_CONTAINER_TOOLTIP = "条件に応じて、処理を分岐します。"
 const PSEUDO_IF_ELIF_TOOLTIP = "条件に応じて、処理を分岐します。"
 const PSEUDO_IF_ELSE_TOOLTIP = "条件に応じて、処理を分岐します。"
@@ -28,6 +29,7 @@ const tooltips: ConstantValues = {
   PSEUDO_ASSIGN_ARRAY_TOOLTIP,
   PSEUDO_ASSIGN_ZERO_TOOLTIP,
   PSEUDO_ASSIGNMENT_TOOLTIP,
+  PSEUDO_FOR_INCREMENT_TOOLTIP,
   PSEUDO_IF_CONTAINER_TOOLTIP,
   PSEUDO_IF_ELIF_TOOLTIP,
   PSEUDO_IF_ELSE_TOOLTIP,
