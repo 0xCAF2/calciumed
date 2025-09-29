@@ -22,6 +22,7 @@ const PSEUDO_NUMBER_TOOLTIP = "数値を表します。"
 const PSEUDO_RELATIONAL_TOOLTIP = "2つの値を比較します。"
 const PSEUDO_STR_TOOLTIP = "文字列を表します。"
 const PSEUDO_VARIABLE_TOOLTIP = "変数の名前を表します。"
+const PSEUDO_WHILE_TOOLTIP = "条件を満たす間、繰り返します。"
 
 const tooltips: ConstantValues = {
   PSEUDO_ARITHMETIC_TOOLTIP,
@@ -44,6 +45,7 @@ const tooltips: ConstantValues = {
   PSEUDO_RELATIONAL_TOOLTIP,
   PSEUDO_STR_TOOLTIP,
   PSEUDO_VARIABLE_TOOLTIP,
+  PSEUDO_WHILE_TOOLTIP,
 }
 
 tooltipManager.addValues(tooltips)
