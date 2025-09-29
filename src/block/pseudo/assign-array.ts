@@ -30,7 +30,7 @@ const pseudoAssignArrayContainer: BlockDefinition = {
     },
   ],
   colour: 330,
-  tooltip: "",
+  tooltip: tooltipManager.getValue("PSEUDO_ASSIGN_ARRAY_CONTAINER_TOOLTIP"),
   helpUrl: "",
 }
 Blockly.defineBlocksWithJsonArray([

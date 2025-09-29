@@ -37,7 +37,8 @@
   },
   {
     "関数": [
-      "pseudo_len"
+      "pseudo_len",
+      "pseudo_int"
     ]
   },
   {
