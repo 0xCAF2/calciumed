@@ -17,7 +17,7 @@ const pseudoAssignArrayItem: BlockDefinition = {
   previousStatement: null,
   nextStatement: null,
   colour: 330,
-  tooltip: "要素を追加して、配列の大きさを変えます。",
+  tooltip: tooltipManager.getValue("PSEUDO_ASSIGN_ARRAY_ITEM_TOOLTIP"),
   helpUrl: "",
 }
 const pseudoAssignArrayContainer: BlockDefinition = {
@@ -26,7 +26,7 @@ const pseudoAssignArrayContainer: BlockDefinition = {
   args0: [
     {
       type: "input_statement",
-      name: "STACK",
+      name: "ITEMS",
     },
   ],
   colour: 330,
@@ -52,7 +52,7 @@ Blockly.Extensions.registerMutator(
       this.updateShape_()
     },
     compose: function (containerBlock: Blockly.Block) {
-      let itemBlock: any = containerBlock.getInputTargetBlock("STACK")
+      let itemBlock: any = containerBlock.getInputTargetBlock("ITEMS")
       const connections: any[] = []
       while (itemBlock && !itemBlock.isInsertionMarker()) {
         connections.push(itemBlock.valueConnection_)
@@ -76,7 +76,7 @@ Blockly.Extensions.registerMutator(
         PSEUDO_ASSIGN_ARRAY_CONTAINER_NAME
       ) as Blockly.BlockSvg
       containerBlock.initSvg()
-      let connection = containerBlock.getInput("STACK")?.connection
+      let connection = containerBlock.getInput("ITEMS")?.connection
       for (let i = 0; i < this.itemCount_; i++) {
         const itemBlock = workspace.newBlock(
           PSEUDO_ASSIGN_ARRAY_ITEM_NAME

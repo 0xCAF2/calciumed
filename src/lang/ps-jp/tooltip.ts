@@ -4,6 +4,8 @@ const PSEUDO_ARITHMETIC_TOOLTIP =
   "数値や文字列に対して、四則演算や文字列の結合を行います。"
 const PSEUDO_ARRAY_TOOLTIP = "配列の要素を1つだけ指定します。"
 const PSEUDO_ARRAY_SLICE_TOOLTIP = "配列の範囲を決めて、要素を指定します。"
+const PSEUDO_ASSIGN_ARRAY_ITEM_TOOLTIP =
+  "要素を追加して、配列の大きさを変えます。"
 const PSEUDO_ASSIGN_ARRAY_TOOLTIP = "新しい配列を代入します。"
 const PSEUDO_ASSIGN_ZERO_TOOLTIP = "配列の要素をすべて0に書き換えます。"
 const PSEUDO_ASSIGNMENT_TOOLTIP = "変数や配列の中身を変更します。"
@@ -28,6 +30,7 @@ const tooltips: ConstantValues = {
   PSEUDO_ARITHMETIC_TOOLTIP,
   PSEUDO_ARRAY_TOOLTIP,
   PSEUDO_ARRAY_SLICE_TOOLTIP,
+  PSEUDO_ASSIGN_ARRAY_ITEM_TOOLTIP,
   PSEUDO_ASSIGN_ARRAY_TOOLTIP,
   PSEUDO_ASSIGN_ZERO_TOOLTIP,
   PSEUDO_ASSIGNMENT_TOOLTIP,
