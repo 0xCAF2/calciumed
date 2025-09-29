@@ -5,7 +5,7 @@ import { tooltipManager } from "../../constant-manager"
 
 const PSEUDO_INT_NAME = "pseudo_int"
 
-const pseudoIntBlock: BlockDefinition = {
+const pseudoInt: BlockDefinition = {
   type: PSEUDO_INT_NAME,
   message0: "整数 ( %1 )",
   args0: [
@@ -22,4 +22,4 @@ const pseudoIntBlock: BlockDefinition = {
   helpUrl: "",
 }
 
-Blockly.defineBlocksWithJsonArray([pseudoIntBlock])
+Blockly.defineBlocksWithJsonArray([pseudoInt])

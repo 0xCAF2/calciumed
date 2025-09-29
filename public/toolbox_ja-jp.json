@@ -38,7 +38,8 @@
   {
     "関数": [
       "pseudo_len",
-      "pseudo_int"
+      "pseudo_int",
+      "pseudo_random"
     ]
   },
   {

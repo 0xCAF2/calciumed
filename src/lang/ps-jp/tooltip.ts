@@ -23,6 +23,7 @@ const PSEUDO_INT_TOOLTIP = "整数に変換します。"
 const PSEUDO_LOGICAL_TOOLTIP = "2つの条件を論理演算します。"
 const PSEUDO_NOT_TOOLTIP = "条件を否定して、反転させます。"
 const PSEUDO_NUMBER_TOOLTIP = "数値を表します。"
+const PSEUDO_RANDOM_TOOLTIP = "0 以上 1 未満のランダムな小数を返します。"
 const PSEUDO_RELATIONAL_TOOLTIP = "2つの値を比較します。"
 const PSEUDO_STR_TOOLTIP = "文字列を表します。"
 const PSEUDO_VARIABLE_TOOLTIP = "変数の名前を表します。"
@@ -49,6 +50,7 @@ const tooltips: ConstantValues = {
   PSEUDO_LOGICAL_TOOLTIP,
   PSEUDO_NOT_TOOLTIP,
   PSEUDO_NUMBER_TOOLTIP,
+  PSEUDO_RANDOM_TOOLTIP,
   PSEUDO_RELATIONAL_TOOLTIP,
   PSEUDO_STR_TOOLTIP,
   PSEUDO_VARIABLE_TOOLTIP,
