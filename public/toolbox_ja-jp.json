@@ -4,7 +4,8 @@
       "pseudo_variable",
       "pseudo_number",
       "pseudo_str",
-      "pseudo_assignment"
+      "pseudo_assignment",
+      "pseudo_print"
     ]
   },
   {
