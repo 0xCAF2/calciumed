@@ -30,7 +30,8 @@
     },
     {
         "繰り返し": [
-            "pseudo_for_increment"
+            "pseudo_for_increment",
+            "pseudo_for_decrement"
         ]
     },
     {
