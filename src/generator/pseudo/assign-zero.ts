@@ -18,7 +18,7 @@ calciumGenerator.forBlock["pseudo_assign_zero"] = (block) => {
     [],
     "=",
     ["sub", ref, ["var", "i"]],
-    ["num", 0],
+    ["num", "0"],
   ]
   return `${JSON.stringify(forRange)},${JSON.stringify(assign)},`
 }
