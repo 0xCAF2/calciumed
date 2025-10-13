@@ -10,12 +10,12 @@ Blockly.setLocale(Lang)
 
 import { CALCIUM_RENDERER_NAME } from "../../editor/calcium-renderer"
 
-import { buildEditor } from "../../editor"
+import { buildEditor, CalciumEditor } from "../../editor"
 
 export function buildCalciumEditor(
   parent: HTMLElement,
   height?: string
-): Promise<Blockly.Workspace> {
+): Promise<CalciumEditor> {
   return buildEditor({
     parent,
     options: {

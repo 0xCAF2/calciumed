@@ -53,10 +53,11 @@ if (userLanguage === "ja-JP" || userLanguage === "ja") {
   await import("./lang/ps-jp")
   await import("./block/pseudo")
   const ja = await import("./lang/ja-jp")
-  const workspace = await ja.buildCalciumEditor(
+  const editor = await ja.buildCalciumEditor(
     document.body,
     "calc(100% - 200px)"
   )
+
   const div = document.createElement("div")
   div.style.display = "flex"
   div.style.flexDirection = "row"
@@ -68,12 +69,14 @@ if (userLanguage === "ja-JP" || userLanguage === "ja") {
 
   const generator = await import("./generator")
   await import("./generator/pseudo")
-  workspace.addChangeListener(() => {
-    codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
+  editor.workspace.addChangeListener(() => {
+    codeArea.value = generator.calciumGenerator.workspaceToCode(
+      editor.workspace
+    )
   })
 } else {
   const en = await import("./lang/en-us")
-  const workspace = await en.buildCalciumEditor(
+  const editor = await en.buildCalciumEditor(
     document.body,
     "calc(100% - 200px)"
   )
@@ -87,7 +90,9 @@ if (userLanguage === "ja-JP" || userLanguage === "ja") {
   div.appendChild(outputArea)
 
   const generator = await import("./generator")
-  workspace.addChangeListener(() => {
-    codeArea.value = generator.calciumGenerator.workspaceToCode(workspace)
+  editor.workspace.addChangeListener(() => {
+    codeArea.value = generator.calciumGenerator.workspaceToCode(
+      editor.workspace
+    )
   })
 }

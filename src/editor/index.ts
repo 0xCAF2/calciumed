@@ -4,6 +4,14 @@ import DarkTheme from "@blockly/theme-dark"
 import { createToolbox } from "./create-toolbox"
 import { pythonCategories } from "./python-categories"
 
+export class CalciumEditor {
+  workspace: Blockly.Workspace
+
+  constructor(workspace: Blockly.Workspace) {
+    this.workspace = workspace
+  }
+}
+
 export type InjectOptions = {
   renderer?: string
   sounds?: boolean
@@ -22,7 +30,7 @@ export const buildEditor = async ({
   parent: HTMLElement
   options: InjectOptions
   height?: string
-}): Promise<Blockly.Workspace> => {
+}): Promise<CalciumEditor> => {
   let toolbox: Blockly.utils.toolbox.ToolboxDefinition
   if (options.toolboxUrl) {
     toolbox = await fetchToolbox(options.toolboxUrl)
@@ -82,7 +90,7 @@ export const buildEditor = async ({
   }
   window.addEventListener("resize", onresize, false)
   onresize()
-  return workspace
+  return new CalciumEditor(workspace)
 }
 
 async function fetchToolbox(
