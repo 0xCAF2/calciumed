@@ -2,13 +2,21 @@ import * as Blockly from "blockly"
 // @ts-ignore
 import DarkTheme from "@blockly/theme-dark"
 import { createToolbox } from "./create-toolbox"
+import { calciumGenerator } from "../generator"
 import { pythonCategories } from "./python-categories"
 
 export class CalciumEditor {
   workspace: Blockly.Workspace
+  generator: Blockly.Generator
 
-  constructor(workspace: Blockly.Workspace) {
+  constructor(workspace: Blockly.Workspace, generator?: Blockly.Generator) {
     this.workspace = workspace
+    // @ts-ignore
+    this.generator = generator ?? calciumGenerator
+  }
+
+  get code(): string {
+    return this.generator.workspaceToCode(this.workspace)
   }
 }
 
