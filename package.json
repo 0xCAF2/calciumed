@@ -1,8 +1,11 @@
 {
     "name": "calciumed",
     "private": true,
-    "version": "0.1.0",
+    "version": "0.0.1",
     "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": ["dist"],
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -10,12 +13,18 @@
         "test": "vitest"
     },
     "devDependencies": {
+        "@types/node": "^24.8.1",
         "typescript": "~5.9.2",
         "vite": "^7.1.3",
+        "vite-plugin-dts": "^4.5.4",
         "vitest": "^3.2.4"
+    },
+    "peerDependencies": {
+        "@blockly/theme-dark": "8.0.1",
+        "blockly": "^12.3.1"
     },
     "dependencies": {
         "@blockly/theme-dark": "^8.0.1",
-        "blockly": "^12.2.0"
+        "blockly": "^12.3.1"
     }
 }

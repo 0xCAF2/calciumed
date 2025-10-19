@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { parseNumber } from "./parse-number"
+import { parseNumber } from "../lib/util/parse-number"
 
 test("parseNumber", () => {
   expect(parseNumber("123")).toBe("123")
