@@ -10,7 +10,8 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "test": "vitest"
+        "test": "vitest",
+        "prepublishOnly": "npm run build"
     },
     "devDependencies": {
         "@types/node": "^24.8.1",
