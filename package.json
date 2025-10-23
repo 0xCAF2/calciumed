@@ -20,10 +20,6 @@
         "vite-plugin-dts": "^4.5.4",
         "vitest": "^3.2.4"
     },
-    "peerDependencies": {
-        "@blockly/theme-dark": "8.0.1",
-        "blockly": "^12.3.1"
-    },
     "dependencies": {
         "@blockly/theme-dark": "^8.0.1",
         "blockly": "^12.3.1"

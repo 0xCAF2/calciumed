@@ -4,14 +4,11 @@ import "./message"
 import "./tooltip"
 
 import * as Lang from "blockly/msg/ja"
-
 // @ts-ignore
 Blockly.setLocale(Lang)
-
 import "../ps-jp"
 
 import { CALCIUM_RENDERER_NAME } from "../../editor/calcium-renderer"
-
 import { buildEditor, CalciumEditor, CategoryDefinition } from "../../editor"
 
 export { buildEditor, CalciumEditor } from "../../editor"
