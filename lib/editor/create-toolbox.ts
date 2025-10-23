@@ -2,7 +2,8 @@ import * as Blockly from "blockly"
 import { pythonCategories } from "./python-categories"
 
 export function createToolbox(
-  categories: CategoryDefinition[]
+  categories: CategoryDefinition[],
+  includesPythonCategories: boolean = true
 ): Blockly.utils.toolbox.ToolboxDefinition {
   const blocks: Blockly.utils.toolbox.ToolboxItemInfo[] = []
   for (const category of categories) {
@@ -18,12 +19,14 @@ export function createToolbox(
   }
   return {
     kind: "categoryToolbox",
-    contents: blocks.concat(pythonCategories),
+    contents: includesPythonCategories
+      ? blocks.concat(pythonCategories)
+      : blocks,
   }
 }
 
 type BlockType = string
 
-type CategoryDefinition = {
+export type CategoryDefinition = {
   [key: string]: BlockType[]
 }

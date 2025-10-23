@@ -1,9 +1,11 @@
 import * as Blockly from "blockly"
 // @ts-ignore
 import DarkTheme from "@blockly/theme-dark"
-import { createToolbox } from "./create-toolbox"
+import { createToolbox, CategoryDefinition } from "./create-toolbox"
 import { calciumGenerator } from "../generator"
-import { pythonCategories } from "./python-categories"
+import { CALCIUM_RENDERER_NAME } from "./calcium-renderer"
+
+export type { CategoryDefinition } from "./create-toolbox"
 
 export class CalciumEditor {
   workspace: Blockly.Workspace
@@ -24,30 +26,26 @@ export type InjectOptions = {
   renderer?: string
   sounds?: boolean
   theme?: any
-  toolboxUrl?: string
+  categories?: CategoryDefinition[]
   zoom?: {
     startScale: number
   }
+  includesPythonCategories?: boolean
 }
 
-export const buildEditor = async ({
+export const buildEditor = ({
   parent,
   options,
   height,
 }: {
   parent: HTMLElement
-  options: InjectOptions
+  options?: InjectOptions
   height?: string
-}): Promise<CalciumEditor> => {
-  let toolbox: Blockly.utils.toolbox.ToolboxDefinition
-  if (options.toolboxUrl) {
-    toolbox = await fetchToolbox(options.toolboxUrl)
-  } else {
-    toolbox = {
-      kind: "categoryToolbox",
-      contents: pythonCategories,
-    }
-  }
+}): CalciumEditor => {
+  const toolbox: Blockly.utils.toolbox.ToolboxDefinition = createToolbox(
+    options?.categories ?? [],
+    options?.includesPythonCategories ?? true
+  )
 
   const table = document.createElement("table")
   table.style.width = "100%"
@@ -71,11 +69,11 @@ export const buildEditor = async ({
   parent.appendChild(table)
 
   const workspace = Blockly.inject(blocklyDiv, {
-    renderer: options.renderer ?? "zelos",
-    sounds: options.sounds ?? false,
-    theme: options.theme ?? DarkTheme,
+    renderer: options?.renderer ?? CALCIUM_RENDERER_NAME,
+    sounds: options?.sounds ?? false,
+    theme: options?.theme ?? DarkTheme,
     toolbox,
-    zoom: options.zoom ?? {
+    zoom: options?.zoom ?? {
       startScale: 0.7,
     },
   })
@@ -99,11 +97,4 @@ export const buildEditor = async ({
   window.addEventListener("resize", onresize, false)
   onresize()
   return new CalciumEditor(workspace)
-}
-
-async function fetchToolbox(
-  url: string
-): Promise<Blockly.utils.toolbox.ToolboxDefinition> {
-  const response = await fetch(url)
-  return createToolbox(await response.json())
 }
